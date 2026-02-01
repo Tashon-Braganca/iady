@@ -10,6 +10,7 @@ import Timeline from "@/components/Timeline";
 import BucketList from "@/components/BucketList";
 import CurvyPath from "@/components/CurvyPath";
 import LevelBottomSheet from "@/components/LevelBottomSheet";
+import ProtectedRoute from "@/components/ProtectedRoute";
 import { useMusic } from "@/lib/MusicContext";
 
 // Map icon strings to components
@@ -141,7 +142,8 @@ export default function PathPage() {
   };
 
   return (
-    <div className="min-h-screen pb-32 relative overflow-x-hidden selection:bg-pink-100">
+    <ProtectedRoute>
+      <div className="min-h-screen pb-32 relative overflow-x-hidden selection:bg-pink-100">
        <MusicPlayer />
        
        {/* Sticky Mini Header */}
@@ -296,7 +298,8 @@ export default function PathPage() {
         level={selectedLevel}
         onOpenLevel={openLevel}
         isLocked={selectedLevel && isLevelLocked(siteData.levels.findIndex(l => l.id === selectedLevel.id))}
-      />
-    </div>
+       />
+     </div>
+    </ProtectedRoute>
   );
 }

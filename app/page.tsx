@@ -24,11 +24,6 @@ export default function LoginPage() {
     e.preventDefault();
     setLoading(true);
 
-    // FIX: Start music IMMEDIATELY on user interaction to bypass browser block
-    if (!isPlaying) {
-        togglePlay(); 
-    }
-
     const res = await fetch("/api/unlock", {
       method: "POST",
       body: JSON.stringify({ password: password.toLowerCase().trim() }),
@@ -38,14 +33,15 @@ export default function LoginPage() {
     if (res.ok) {
       // Set session flag
       sessionStorage.setItem("is_authenticated", "true");
+      
+      // Start music on successful login
+      if (!isPlaying) {
+        togglePlay();
+      }
+      
       router.push("/path");
     } else {
       setLoading(false);
-      // If login failed, stop the music we just started
-      if (isPlaying) { 
-          togglePlay(); 
-      }
-      
       setErrorCount((prev) => prev + 1);
       
       const messages = [
