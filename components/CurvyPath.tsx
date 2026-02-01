@@ -1,14 +1,15 @@
 "use client";
 
 import { useRef, useEffect, useState } from "react";
-import { motion, useScroll } from "framer-motion";
+import { motion, useScroll, useTransform } from "framer-motion";
 
 interface CurvyPathProps {
   items: any[];
   renderItem: (item: any, index: number, isLeft: boolean) => React.ReactNode;
+  isMusicPlaying?: boolean;
 }
 
-export default function CurvyPath({ items, renderItem }: CurvyPathProps) {
+export default function CurvyPath({ items, renderItem, isMusicPlaying }: CurvyPathProps) {
   const containerRef = useRef<HTMLDivElement>(null);
   const [svgHeight, setSvgHeight] = useState(1000);
   
@@ -20,6 +21,9 @@ export default function CurvyPath({ items, renderItem }: CurvyPathProps) {
     target: containerRef,
     offset: ["start center", "end center"]
   });
+
+  // Create a drawing effect that is slightly ahead of scroll
+  const pathLength = useTransform(scrollYProgress, [0, 1], [0, 1.2]);
 
   useEffect(() => {
     setSvgHeight(items.length * ITEM_SPACING + 100);
@@ -39,8 +43,6 @@ export default function CurvyPath({ items, renderItem }: CurvyPathProps) {
         const prevX = i === 0 ? 50 : ( (i-1) % 2 === 0 ? 25 : 75 );
         
         // Control points for smooth curve
-        // CP1: Vertical from prev point
-        // CP2: Vertical to current point
         const cp1x = prevX;
         const cp1y = prevY + (y - prevY) * 0.5;
         
@@ -63,24 +65,49 @@ export default function CurvyPath({ items, renderItem }: CurvyPathProps) {
         viewBox={`0 0 100 ${svgHeight}`} 
         preserveAspectRatio="none"
       >
-        {/* Background Path (Gray) */}
+        {/* Glow Effect when Music is Playing */}
+        {isMusicPlaying && (
+             <motion.path 
+                d={d} 
+                stroke="#60A5FA" 
+                strokeWidth="12" 
+                fill="none" 
+                strokeLinecap="round"
+                initial={{ opacity: 0 }}
+                animate={{ opacity: [0.2, 0.4, 0.2] }}
+                transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
+                className="blur-xl"
+            />
+        )}
+
+        {/* 1. Stitched/Dotted Underlay (Sewing look) */}
         <path 
             d={d} 
-            stroke="#cbd5e1" 
-            strokeWidth="1.5" 
+            stroke="#e2e8f0" 
+            strokeWidth="3" 
             fill="none" 
-            strokeDasharray="6 6"
             strokeLinecap="round"
         />
+        <path 
+            d={d} 
+            stroke="#94a3b8" 
+            strokeWidth="1.5" 
+            fill="none" 
+            strokeDasharray="2 6"
+            strokeLinecap="round"
+            className="opacity-40"
+        />
         
-        {/* Progress Path (Blue) */}
+        {/* 2. Progress Path (Pastel Gradient feel via solid color for now, can use gradient defs if needed) */}
+        {/* Using a nice pastel blue/indigo */}
         <motion.path 
             d={d} 
-            stroke="#87CEEB" 
-            strokeWidth="2.5" 
+            stroke="#818cf8" 
+            strokeWidth="3" 
             fill="none" 
             strokeLinecap="round"
-            style={{ pathLength: scrollYProgress }}
+            style={{ pathLength }}
+            className="drop-shadow-sm"
         />
       </svg>
 

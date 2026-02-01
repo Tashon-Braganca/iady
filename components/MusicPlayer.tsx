@@ -1,25 +1,28 @@
 "use client";
 
 import { useState, useEffect, useRef } from "react";
-import { Volume2, VolumeX, Music } from "lucide-react";
+import { Volume2, VolumeX, Music, Disc } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import { siteData } from "@/content/siteData";
 
-export default function MusicPlayer() {
+interface MusicPlayerProps {
+    onPlayChange?: (isPlaying: boolean) => void;
+}
+
+export default function MusicPlayer({ onPlayChange }: MusicPlayerProps) {
   const [isPlaying, setIsPlaying] = useState(false);
   const [isMuted, setIsMuted] = useState(false);
   const audioRef = useRef<HTMLAudioElement | null>(null);
 
   useEffect(() => {
+    // Initialize audio
     audioRef.current = new Audio(siteData.general.musicUrl);
     audioRef.current.loop = true;
 
+    // Check localStorage (but don't autoplay)
     const savedState = localStorage.getItem("musicPlaying");
-    if (savedState === "true") {
-      // User previously enabled music. We can't auto-play without interaction,
-      // but we can show the state as ready.
-      // Actually, browsers block autoplay. We'll wait for user interaction.
-    }
+    // We intentionally ignore savedState for autoplay due to browser policies
+    // but we can set up the UI state if we wanted (optional)
 
     return () => {
       if (audioRef.current) {
@@ -29,6 +32,11 @@ export default function MusicPlayer() {
     };
   }, []);
 
+  // Sync state with parent
+  useEffect(() => {
+      onPlayChange?.(isPlaying);
+  }, [isPlaying, onPlayChange]);
+
   const togglePlay = () => {
     if (!audioRef.current) return;
 
@@ -37,9 +45,18 @@ export default function MusicPlayer() {
       setIsPlaying(false);
       localStorage.setItem("musicPlaying", "false");
     } else {
-      audioRef.current.play().catch((e) => console.log("Playback error:", e));
-      setIsPlaying(true);
-      localStorage.setItem("musicPlaying", "true");
+      const playPromise = audioRef.current.play();
+      if (playPromise !== undefined) {
+        playPromise
+            .then(() => {
+                setIsPlaying(true);
+                localStorage.setItem("musicPlaying", "true");
+            })
+            .catch((e) => {
+                console.error("Playback error:", e);
+                // Maybe show a toast or UI feedback here
+            });
+      }
     }
   };
 
@@ -51,39 +68,61 @@ export default function MusicPlayer() {
   };
 
   return (
-    <div className="fixed bottom-6 right-6 z-50">
+    <div className="fixed bottom-6 right-6 z-[100]">
       <motion.button
         onClick={togglePlay}
-        className="bg-white/80 backdrop-blur-md p-3 rounded-full shadow-lg border border-primary/20 text-primary hover:scale-110 transition-transform flex items-center gap-2"
+        className={`
+            group flex items-center gap-3 pr-4 pl-3 py-2.5 rounded-full shadow-lg border border-white/50 backdrop-blur-md transition-all
+            ${isPlaying ? "bg-white/90 text-gray-800" : "bg-white/70 text-gray-500 hover:bg-white/90"}
+        `}
+        whileHover={{ scale: 1.05 }}
         whileTap={{ scale: 0.95 }}
       >
-        {isPlaying ? (
-            <div className="flex items-center gap-2">
-                <span className="text-xs font-medium pr-1">Playing</span>
-                 <motion.div
-                    animate={{ rotate: 360 }}
-                    transition={{ duration: 3, repeat: Infinity, ease: "linear" }}
-                >
-                    <Music size={20} />
+        <div className={`p-2 rounded-full ${isPlaying ? "bg-indigo-100 text-indigo-500" : "bg-gray-100"}`}>
+            {isPlaying ? (
+                <motion.div animate={{ rotate: 360 }} transition={{ duration: 3, repeat: Infinity, ease: "linear" }}>
+                    <Disc size={20} />
                 </motion.div>
-            </div>
-         
-        ) : (
-          <div className="flex items-center gap-2">
-            <span className="text-xs font-medium pr-1">Play Music</span>
-            <Music size={20} />
-          </div>
+            ) : (
+                <Music size={20} />
+            )}
+        </div>
+        
+        <div className="flex flex-col text-left">
+            <span className="text-xs font-bold uppercase tracking-wider opacity-70">
+                {isPlaying ? "Now Playing" : "Soundtrack"}
+            </span>
+            <span className="text-sm font-semibold leading-none">
+                {isPlaying ? "Our Song" : "Play Music"}
+            </span>
+        </div>
+
+        {isPlaying && (
+            <motion.div 
+                className="flex gap-0.5 items-end h-4 ml-2"
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+            >
+                {[1, 2, 3].map((i) => (
+                    <motion.div 
+                        key={i}
+                        className="w-1 bg-indigo-400 rounded-full"
+                        animate={{ height: [4, 12, 4] }}
+                        transition={{ duration: 0.5 + i * 0.1, repeat: Infinity }}
+                    />
+                ))}
+            </motion.div>
         )}
       </motion.button>
         
       <AnimatePresence>
         {isPlaying && (
             <motion.button
-                initial={{ opacity: 0, x: 20 }}
-                animate={{ opacity: 1, x: 0 }}
-                exit={{ opacity: 0, x: 20 }}
+                initial={{ opacity: 0, scale: 0.5, y: 10 }}
+                animate={{ opacity: 1, scale: 1, y: 0 }}
+                exit={{ opacity: 0, scale: 0.5, y: 10 }}
                 onClick={toggleMute}
-                className="absolute -top-12 right-0 bg-white/80 backdrop-blur-md p-2 rounded-full shadow-md text-gray-500"
+                className="absolute -top-12 right-2 bg-white/90 backdrop-blur-md p-2.5 rounded-full shadow-md text-gray-600 hover:text-indigo-600 border border-white/50"
             >
                 {isMuted ? <VolumeX size={18} /> : <Volume2 size={18} />}
             </motion.button>

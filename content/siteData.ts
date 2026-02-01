@@ -44,6 +44,15 @@ export const siteData = {
       icon: "Coffee",
       description: "Cafe hopping online & chill.",
       color: "bg-orange-100",
+      accent: "orange",
+      group: "The Beginning",
+      previewImages: [
+        "/photos/20251214_164045-IMG_STYLE.jpg",
+        "/photos/IMG-20251004-WA0012.jpg",
+        "/photos/IMG-20251004-WA0013.jpg",
+        "/photos/IMG-20251004-WA0017.jpg"
+      ],
+      memoryNotes: ["Our first coffee date", "Late night talks", "Choosing our menu"],
       content: {
         title: "Our Virtual Date Spot",
         text: "Let's grab a coffee and talk about everything.",
@@ -56,6 +65,14 @@ export const siteData = {
       icon: "Plane",
       description: "Our future destination.",
       color: "bg-blue-100",
+      accent: "blue",
+      group: "Dreams",
+      previewImages: [
+        "/photos/20251214_221838-IMG_STYLE.jpg",
+        "/photos/IMG-20251004-WA0022.jpg",
+        "/photos/IMG-20251008-WA0021.jpg"
+      ],
+      memoryNotes: ["Venice canals", "Pizza in Naples", "Holding hands in Rome"],
       content: {
         title: "Italy Awaits",
         text: "One day we will walk these streets together.",
@@ -68,6 +85,12 @@ export const siteData = {
       icon: "Sword",
       description: "Dedicate your heart.",
       color: "bg-green-900 text-white",
+      accent: "green",
+      previewImages: [
+        "/photos/20251214_221858-IMG_STYLE.jpg",
+        "/photos/IMG-20251027-WA0052.jpg"
+      ],
+      memoryNotes: ["Shinzo wo Sasageyo!", "Mikasa's scarf"],
       content: {
         title: "To You, 2000 Years From Now",
         text: "We will watch it 500 times. I'll get you the scarf.",
@@ -80,6 +103,12 @@ export const siteData = {
       icon: "Flower2",
       description: "Your favorite.",
       color: "bg-white border border-gray-200",
+      accent: "pink",
+      previewImages: [
+        "/photos/20251214_221921-IMG_STYLE.jpg",
+        "/photos/IMG-20251105-WA0007(1).jpg"
+      ],
+      memoryNotes: ["Pure beauty", "Just for you"],
       content: {
         title: "For My Flower",
         text: "Pure and beautiful, just like you.",
@@ -92,6 +121,12 @@ export const siteData = {
       icon: "Candy",
       description: "Chocolates & Cheesecakes.",
       color: "bg-pink-100",
+      accent: "pink",
+      previewImages: [
+        "/photos/20251214_222021-IMG_STYLE.jpg",
+        "/photos/IMG-20251105-WA0015.jpg"
+      ],
+      memoryNotes: ["Sweet cravings", "Chocolate runs"],
       content: {
         title: "Sweet Treats",
         text: "Dark chocolate, cheesecake, and everything sweet.",
@@ -104,6 +139,12 @@ export const siteData = {
       icon: "Utensils",
       description: "Indian, Indo-Chinese, Mexican.",
       color: "bg-yellow-100",
+      accent: "yellow",
+      previewImages: [
+        "/photos/20251214_222112-IMG_STYLE.jpg",
+        "/photos/IMG-20251105-WA0018.jpg"
+      ],
+      memoryNotes: ["Spicy food challenge", "Street food cravings"],
       content: {
         title: "Our Menu",
         text: "From spicy curries to crispy tacos.",
@@ -116,6 +157,12 @@ export const siteData = {
       icon: "Film",
       description: "Bollywood & Chai.",
       color: "bg-red-100",
+      accent: "red",
+      previewImages: [
+        "/photos/IMG-20250914-WA0192.jpg",
+        "/photos/IMG-20250914-WA0192 (2).jpg"
+      ],
+      memoryNotes: ["Movie marathons", "Popcorn time"],
       content: {
         title: "Movie Night",
         text: "Cozy blankets and endless movies.",
@@ -128,6 +175,12 @@ export const siteData = {
       icon: "Palette",
       description: "Your masterpieces.",
       color: "bg-purple-100",
+      accent: "purple",
+      previewImages: [
+        "/photos/IMG-20251004-WA0018.jpg",
+        "/photos/IMG-20251104-WA0023.jpg"
+      ],
+      memoryNotes: ["Sketching session", "Your beautiful art"],
       content: {
         title: "Your Art",
         text: "Dancing, painting, sketching... you do it all.",
@@ -140,6 +193,12 @@ export const siteData = {
       icon: "Moon",
       description: "Shhh...",
       color: "bg-indigo-900 text-white",
+      accent: "indigo",
+      previewImages: [
+        "/photos/IMG-20251027-WA0039.jpg",
+        "/photos/IMG-20251102-WA0033.jpg"
+      ],
+      memoryNotes: ["Sleeping beauty", "Quiet moments"],
       content: {
         title: "Sweet Dreams",
         text: "You look so cute when you sleep.",
@@ -152,6 +211,13 @@ export const siteData = {
       icon: "Video",
       description: "Screenshots of us.",
       color: "bg-gray-100",
+      accent: "blue",
+      previewImages: [
+        "/photos/Screenshot_20251019-234213.png",
+        "/photos/Screenshot_20251019-234235.png",
+        "/photos/Screenshot_20250831-125140.jpg"
+      ],
+      memoryNotes: ["Late night calls", "Bad connection, good vibes"],
       content: {
         title: "Digital Closeness",
         text: "Every pixel of you is perfect.",
@@ -164,6 +230,12 @@ export const siteData = {
       icon: "Smile",
       description: "AI Generated Warmth.",
       color: "bg-teal-100",
+      accent: "teal",
+      previewImages: [
+        "/photos/IMG-20251105-WA0032.jpg",
+        "/photos/IMG-20251105-WA0032 (2).jpg"
+      ],
+      memoryNotes: ["Warm embrace", "Until it's real"],
       content: {
         title: "A Virtual Hug",
         text: "Since we haven't met yet, I asked a computer to hug you for me. Best I can do until Italy.",
