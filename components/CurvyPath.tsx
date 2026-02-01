@@ -1,7 +1,7 @@
 "use client";
 
 import { useRef, useEffect, useState } from "react";
-import { motion, useScroll, useTransform } from "framer-motion";
+import { motion, useScroll, useTransform, useMotionTemplate } from "framer-motion";
 
 interface CurvyPathProps {
   items: any[];
@@ -21,8 +21,9 @@ export default function CurvyPath({ items, renderItem, isMusicPlaying }: CurvyPa
     offset: ["start center", "end center"]
   });
 
-  const pathLength = useTransform(scrollYProgress, [0, 1], [0, 1.2]);
-  const trainOffset = useTransform(scrollYProgress, [0, 1], [0, 100]);
+  const pathLength = useTransform(scrollYProgress, [0, 1], [0, 1]); // Sync with train
+  const trainProgressRaw = useTransform(scrollYProgress, [0, 1], [0, 100]);
+  const trainOffset = useMotionTemplate`${trainProgressRaw}%`;
 
   useEffect(() => {
     setSvgHeight(items.length * ITEM_SPACING + 100);

@@ -16,13 +16,13 @@ export default function FinalPage() {
   }, []);
 
   return (
-    <div className="min-h-screen bg-black flex items-center justify-center relative overflow-hidden">
+    <div className="h-screen w-screen bg-black flex items-center justify-center relative overflow-hidden">
       <MusicPlayer />
       
-      {/* Video Player - Fixed rotation and aspect ratio */}
-      <div className="relative w-full h-full flex items-center justify-center">
+      {/* Video Player - Fixed aspect ratio & containment */}
+      <div className="relative w-full h-full flex items-center justify-center p-4">
         <video 
-            className="max-w-full max-h-full w-auto h-auto shadow-2xl"
+            className="max-w-full max-h-full w-auto h-auto object-contain shadow-2xl"
             style={{
                 boxShadow: "0 0 50px rgba(0,0,0,0.5)"
             }}

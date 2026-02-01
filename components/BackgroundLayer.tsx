@@ -17,18 +17,18 @@ export default function BackgroundLayer() {
       {/* 1. Base Paper Texture Color */}
       <div className="absolute inset-0 bg-[#FDFBF7]" />
 
-      {/* 2. Photo Collage Background - ABSOLUTELY NO BLUR */}
+      {/* 2. Photo Collage Background - CLEAR & VISIBLE */}
       <div 
-        className="absolute inset-0 bg-cover bg-center transition-opacity duration-1000"
+        className="absolute inset-0 bg-cover bg-center"
         style={{ 
             backgroundImage: "url('/bg/Brown Autumn Photo Collage.png')",
-            opacity: 0.6, 
-            filter: "none" // Removed saturate/brightness/blur entirely
+            opacity: 0.9, 
+            filter: "none"
         }}
       />
 
-      {/* 3. Subtle Vignette (Lighter now) */}
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_transparent_0%,_rgba(255,255,255,0.4)_50%,_rgba(253,251,247,0.8)_100%)]" />
+      {/* 3. Overlay to ensure text readability (No blur, just white tint) */}
+      <div className="absolute inset-0 bg-white/40" />
 
       {/* 4. Floating Hearts (Background Ambiance) */}
       <div className="absolute inset-0 overflow-hidden">

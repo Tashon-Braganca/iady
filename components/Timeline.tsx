@@ -34,7 +34,7 @@ export default function Timeline() {
                               
                               <div 
                                 onClick={() => setSelectedItem(item)}
-                                className="flex flex-col gap-1 hover:bg-white/60 p-3 -ml-2 rounded-xl transition-all cursor-pointer relative z-20 active:scale-95 shadow-sm hover:shadow-md border border-transparent hover:border-white/50"
+                                className="flex flex-col gap-1 bg-white/90 backdrop-blur-sm p-4 -ml-2 rounded-xl transition-all cursor-pointer relative z-20 active:scale-95 shadow-md hover:shadow-lg border border-white/50"
                               >
                                   <span className="text-xs font-bold text-blue-500 uppercase tracking-wider">{item.date}</span>
                                   <div className="flex items-center gap-2">
@@ -76,11 +76,11 @@ export default function Timeline() {
                 <X size={20} />
               </button>
 
-              <div className="aspect-[4/3] w-full rounded-xl overflow-hidden mb-4">
+              <div className="w-full h-64 bg-gray-100 rounded-xl overflow-hidden mb-4 flex items-center justify-center">
                 <img 
                   src={selectedItem.image} 
                   alt={selectedItem.title}
-                  className="w-full h-full object-cover"
+                  className="max-w-full max-h-full object-contain"
                 />
               </div>
 
