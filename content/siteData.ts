@@ -5,7 +5,7 @@ export const siteData = {
     coupleName: "Adyasha & Me",
     password: "i love you",
     passwordHint: "A three letter word (phrase)",
-    musicUrl: "/audio/BIRDS%20OF%20A%20FEATHER%20-%20Billie%20Eilish%20free%20mp3.mp3",
+    musicUrl: "/audio/BIRDS OF A FEATHER - Billie Eilish free mp3.mp3",
   },
   
   hero: {
@@ -19,26 +19,26 @@ export const siteData = {
       title: "The Cold DM", 
       icon: "Instagram", 
       description: "Where it all started...",
-      image: "/photos/The%20Cold%20DM/main.png" 
+      image: "/photos/The Cold DM/main.png" 
     },
     { 
       date: "Sept 28", 
       title: "Officially Us", 
       icon: "Heart", 
       description: "The start of forever.",
-      image: "/photos/Officialy%20Us/main.png"
+      image: "/photos/Officialy Us/main.png"
     },
     { 
       date: "Oct 1", 
       title: "First 'I Love You'", 
       icon: "Lock", 
       description: "Locked in.",
-      image: "/photos/First%20I%20Love%20You/main.png"
+      image: "/photos/First I Love You/main.png"
     },
   ],
 
   levels: [
-    // 1. VC Memories (First)
+    // 1. VC Memories
     {
       id: "vc",
       title: "VC Memories",
@@ -48,18 +48,18 @@ export const siteData = {
       accent: "blue",
       group: "The Beginning",
       previewImages: [
-        "/photos/Vc%20Memories/1.jpg",
-        "/photos/Vc%20Memories/2.jpg",
-        "/photos/Vc%20Memories/3.jpeg",
-        "/photos/Vc%20Memories/4.png",
-        "/photos/Vc%20Memories/5.png",
-        "/photos/Vc%20Memories/6.png"
+        "/photos/Vc Memories/1.jpg",
+        "/photos/Vc Memories/2.jpg",
+        "/photos/Vc Memories/3.jpeg",
+        "/photos/Vc Memories/4.png",
+        "/photos/Vc Memories/5.png",
+        "/photos/Vc Memories/6.png"
       ],
       memoryNotes: ["Late night calls", "Bad connection, good vibes"],
       content: {
         title: "Digital Closeness",
         text: "Every pixel of you is perfect.",
-        image: "/photos/Vc%20Memories/main.jpg",
+        image: "/photos/Vc Memories/main.jpg",
       }
     },
     
@@ -96,18 +96,18 @@ export const siteData = {
       accent: "red",
       group: "Romance",
       previewImages: [
-        "/photos/Times%20I%20fell%20for%20you/1.jpg",
-        "/photos/Times%20I%20fell%20for%20you/2.jpg",
-        "/photos/Times%20I%20fell%20for%20you/3.jpg",
-        "/photos/Times%20I%20fell%20for%20you/4.jpg",
-        "/photos/Times%20I%20fell%20for%20you/5.jpg",
-        "/photos/Times%20I%20fell%20for%20you/6.jpg"
+        "/photos/Times I fell for you/1.jpg",
+        "/photos/Times I fell for you/2.jpg",
+        "/photos/Times I fell for you/3.jpg",
+        "/photos/Times I fell for you/4.jpg",
+        "/photos/Times I fell for you/5.jpg",
+        "/photos/Times I fell for you/6.jpg"
       ],
       memoryNotes: ["That specific smile", "When you laughed", "Your kindness"],
       content: {
         title: "Falling For You",
         text: "It wasn't just one moment. It was a million little things that made me realize you're the one.",
-        image: "/photos/Times%20I%20fell%20for%20you/main.jpg",
+        image: "/photos/Times I fell for you/main.jpg",
       }
     },
 
@@ -121,17 +121,17 @@ export const siteData = {
       accent: "pink",
       group: "Little Things",
       previewImages: [
-        "/photos/White%20Lillies/1.jpg",
-        "/photos/White%20Lillies/2.jpg",
-        "/photos/White%20Lillies/3.jpg",
-        "/photos/White%20Lillies/4.jpg",
-        "/photos/White%20Lillies/5.jpg"
+        "/photos/White Lillies/1.jpg",
+        "/photos/White Lillies/2.jpg",
+        "/photos/White Lillies/3.jpg",
+        "/photos/White Lillies/4.jpg",
+        "/photos/White Lillies/5.jpg"
       ],
       memoryNotes: ["Pure beauty", "Just for you"],
       content: {
         title: "For My Flower",
         text: "Pure and beautiful, just like you.",
-        image: "/photos/White%20Lillies/main.jpg",
+        image: "/photos/White Lillies/main.jpg",
       }
     },
 
@@ -144,15 +144,15 @@ export const siteData = {
       color: "bg-pink-100",
       accent: "pink",
       previewImages: [
-        "/photos/Sugar%20Rush/1.jpeg",
-        "/photos/Sugar%20Rush/2.jpg",
-        "/photos/Sugar%20Rush/3.jpeg"
+        "/photos/Sugar Rush/1.jpeg",
+        "/photos/Sugar Rush/2.jpg",
+        "/photos/Sugar Rush/3.jpeg"
       ],
       memoryNotes: ["Sweet cravings", "Chocolate runs"],
       content: {
         title: "Sweet Treats",
         text: "Dark chocolate, cheesecake, and everything sweet.",
-        image: "/photos/Sugar%20Rush/main.jpg",
+        image: "/photos/Sugar Rush/main.jpg",
       }
     },
 
@@ -165,16 +165,16 @@ export const siteData = {
       color: "bg-yellow-100",
       accent: "yellow",
       previewImages: [
-        "/photos/Food%20Transport/1.jpg",
-        "/photos/Food%20Transport/2.png",
-        "/photos/Food%20Transport/3.png",
-        "/photos/Food%20Transport/4.png"
+        "/photos/Food Transport/1.jpg",
+        "/photos/Food Transport/2.png",
+        "/photos/Food Transport/3.png",
+        "/photos/Food Transport/4.png"
       ],
       memoryNotes: ["Spicy food challenge", "Street food cravings"],
       content: {
         title: "Our Menu",
         text: "From spicy curries to crispy tacos.",
-        image: "/photos/Food%20Transport/main.jpg",
+        image: "/photos/Food Transport/main.jpg",
       }
     },
 
@@ -187,16 +187,16 @@ export const siteData = {
       color: "bg-red-100",
       accent: "red",
       previewImages: [
-        "/photos/Binge%20Watch/1.png",
-        "/photos/Binge%20Watch/2.png",
-        "/photos/Binge%20Watch/3.png",
-        "/photos/Binge%20Watch/4.png"
+        "/photos/Binge Watch/1.png",
+        "/photos/Binge Watch/2.png",
+        "/photos/Binge Watch/3.png",
+        "/photos/Binge Watch/4.png"
       ],
       memoryNotes: ["Movie marathons", "Popcorn time"],
       content: {
         title: "Movie Night",
         text: "Cozy blankets and endless movies.",
-        image: "/photos/Binge%20Watch/main.png",
+        image: "/photos/Binge Watch/main.png",
       }
     },
 
@@ -209,51 +209,43 @@ export const siteData = {
       color: "bg-purple-100",
       accent: "purple",
       previewImages: [
-        "/photos/Art%20gallery/1.jpg",
-        "/photos/Art%20gallery/2.png",
-        "/photos/Art%20gallery/3.jpeg",
-        "/photos/Art%20gallery/4.jpeg",
-        "/photos/Art%20gallery/5.jpg"
+        "/photos/Art gallery/1.jpg",
+        "/photos/Art gallery/2.png",
+        "/photos/Art gallery/3.jpeg",
+        "/photos/Art gallery/4.jpeg",
+        "/photos/Art gallery/5.jpg"
       ],
       memoryNotes: ["Sketching session", "Your beautiful art"],
       content: {
         title: "Your Art",
         text: "Dancing, painting, sketching... you do it all.",
-        image: "/photos/Art%20gallery/main.jpg",
+        image: "/photos/Art gallery/main.jpg",
       }
     },
 
-    // 9. Virtual Date (Second Last) + GMeet
+    // 9. Virtual Date (SECOND LAST - GMeet Link)
     {
       id: "date-night",
       title: "Virtual Date",
       icon: "Coffee",
-      description: "Tap to join call...",
+      description: "Call me now...",
       color: "bg-orange-100",
       accent: "orange",
       group: "Right Now",
-      meetLink: "https://meet.google.com/abc-defg-hij", 
+      meetLink: "https://meet.google.com/your-meeting-code", // REPLACE WITH YOUR ACTUAL LINK
       previewImages: [
-        // No files in "Virtual Date" folder found in ls, reusing from "The Cold DM" as placeholder or empty?
-        // Wait, "Virtual Date" was renamed? 
-        // User screenshot showed "The Cold DM", "Officialy Us", etc.
-        // It did NOT show "Virtual Date" folder.
-        // Ah, maybe "The Cold DM" is the virtual date? No.
-        // Let's assume user hasn't created "Virtual Date" folder or it's named something else.
-        // Based on LS, there is NO "Virtual Date" folder.
-        // I'll point to "The Cold DM" images as a fallback to avoid broken images.
-        "/photos/The%20Cold%20DM/1.jpg",
-        "/photos/The%20Cold%20DM/main.png"
+        "/photos/The Cold DM/1.jpg",
+        "/photos/The Cold DM/main.png"
       ],
-      memoryNotes: ["I'm waiting...", "Click the button!"],
+      memoryNotes: ["I'm waiting for you!", "Pick up!"],
       content: {
-        title: "It's Date Time",
-        text: "I'm waiting for you on the other side. Come say hi!",
-        image: "/photos/The%20Cold%20DM/main.png",
+        title: "Let's Talk",
+        text: "Click the button to join our virtual coffee date.",
+        image: "/photos/The Cold DM/main.png",
       }
     },
 
-    // 10. The Hug (Last)
+    // 10. The Hug (LAST)
     {
       id: "hug",
       title: "The Hug",
@@ -263,41 +255,39 @@ export const siteData = {
       accent: "teal",
       group: "Until Real",
       previewImages: [
-        "/photos/The%20Hug/1.png",
-        "/photos/The%20Hug/2.png",
-        "/photos/The%20Hug/3.png",
-        "/photos/The%20Hug/4.png"
+        "/photos/The Hug/1.png",
+        "/photos/The Hug/2.png",
+        "/photos/The Hug/3.png",
+        "/photos/The Hug/4.png"
       ],
       memoryNotes: ["Warm embrace", "Until it's real"],
       content: {
         title: "A Virtual Hug",
         text: "Since we haven't met yet, I asked a computer to hug you for me. Best I can do until Italy.",
-        image: "/photos/The%20Hug/main.png",
+        image: "/photos/The Hug/main.png",
       }
     }
   ],
 
   gallery: [
-     // We'll populate this with available images from the ls command to ensure no broken links
-     // Grabbing some random ones from the folders
-     { src: "/photos/Times%20I%20fell%20for%20you/1.jpg", alt: "Us" },
-     { src: "/photos/Times%20I%20fell%20for%20you/2.jpg", alt: "Us" },
-     { src: "/photos/Times%20I%20fell%20for%20you/3.jpg", alt: "Us" },
-     { src: "/photos/Times%20I%20fell%20for%20you/4.jpg", alt: "Us" },
-     { src: "/photos/Times%20I%20fell%20for%20you/5.jpg", alt: "Us" },
-     { src: "/photos/Vc%20Memories/1.jpg", alt: "VC" },
-     { src: "/photos/Vc%20Memories/2.jpg", alt: "VC" },
-     { src: "/photos/Vc%20Memories/3.jpeg", alt: "VC" },
-     { src: "/photos/Sugar%20Rush/1.jpeg", alt: "Sweet" },
-     { src: "/photos/Art%20gallery/1.jpg", alt: "Art" },
+     { src: "/photos/Times I fell for you/1.jpg", alt: "Us" },
+     { src: "/photos/Times I fell for you/2.jpg", alt: "Us" },
+     { src: "/photos/Times I fell for you/3.jpg", alt: "Us" },
+     { src: "/photos/Times I fell for you/4.jpg", alt: "Us" },
+     { src: "/photos/Times I fell for you/5.jpg", alt: "Us" },
+     { src: "/photos/Vc Memories/1.jpg", alt: "VC" },
+     { src: "/photos/Vc Memories/2.jpg", alt: "VC" },
+     { src: "/photos/Vc Memories/3.jpeg", alt: "VC" },
+     { src: "/photos/Sugar Rush/1.jpeg", alt: "Sweet" },
+     { src: "/photos/Art gallery/1.jpg", alt: "Art" },
   ],
   
   videos: {
     kissie: [
-        { src: "/videos/kissie/VID-20250925-WA0039.mp4", poster: "/photos/Times%20I%20fell%20for%20you/1.jpg" },
+        { src: "/videos/kissie/VID-20250925-WA0039.mp4", poster: "/photos/Times I fell for you/1.jpg" },
     ],
     dance: [
-        { src: "/videos/dance/VID-20251213-WA0058.mp4", poster: "/photos/Times%20I%20fell%20for%20you/2.jpg" },
+        { src: "/videos/dance/VID-20251213-WA0058.mp4", poster: "/photos/Times I fell for you/2.jpg" },
     ]
   },
 
@@ -331,6 +321,6 @@ export const siteData = {
   
   final: {
       text: "Love you, always, my forever.",
-      image: "/photos/Officialy%20Us/main.png" // Reusing a valid image
+      image: "/photos/Officialy Us/main.png"
   }
 };
