@@ -63,19 +63,19 @@ export default function VideosPage() {
           animate={{ opacity: 1, y: 0 }}
           exit={{ opacity: 0, y: -10 }}
           transition={{ duration: 0.2 }}
-          className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-2xl mx-auto"
+          className="grid grid-cols-2 md:grid-cols-2 gap-4 max-w-4xl mx-auto px-2"
         >
           {siteData.videos[activeTab].map((video, index) => (
-            <div key={index} className="bg-white p-2 rounded-2xl shadow-lg border border-gray-100 overflow-hidden relative group">
-                <div className="aspect-[9/16] relative rounded-xl overflow-hidden bg-black">
+            <div key={video.src} className="bg-white p-2 rounded-xl shadow-md border border-gray-100 relative group hover:shadow-xl transition-all">
+                <div className="aspect-[9/16] relative rounded-lg overflow-hidden bg-black">
                      <video
                         src={video.src}
-                        poster={video.poster}
+                        // poster removed to avoid mismatch
                         controls
-                        className="w-full h-full object-cover"
+                        className="w-full h-full object-contain"
                         playsInline
+                        preload="metadata"
                       />
-                      {/* Play overlay if needed, native controls usually sufficient */}
                 </div>
             </div>
           ))}

@@ -17,13 +17,13 @@ export default function BackgroundLayer() {
       {/* 1. Base Paper Texture Color */}
       <div className="absolute inset-0 bg-[#FDFBF7]" />
 
-      {/* 2. Photo Collage Background - Improved Visibility */}
+      {/* 2. Photo Collage Background - ABSOLUTELY NO BLUR */}
       <div 
         className="absolute inset-0 bg-cover bg-center transition-opacity duration-1000"
         style={{ 
             backgroundImage: "url('/bg/Brown Autumn Photo Collage.png')",
-            opacity: 0.45, // Increased from 0.12
-            filter: "blur(0px) saturate(1.1) brightness(1.05)" // Removed blur, slightly boosted colors
+            opacity: 0.6, 
+            filter: "none" // Removed saturate/brightness/blur entirely
         }}
       />
 
@@ -35,7 +35,7 @@ export default function BackgroundLayer() {
         {[...Array(6)].map((_, i) => (
             <motion.div
                 key={i}
-                className="absolute text-pink-200/60" // Slightly more visible hearts
+                className="absolute text-pink-200/60"
                 initial={{
                     x: Math.random() * (typeof window !== 'undefined' ? window.innerWidth : 1000),
                     y: Math.random() * (typeof window !== 'undefined' ? window.innerHeight : 1000),

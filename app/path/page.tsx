@@ -98,15 +98,15 @@ export default function PathPage() {
                     whileTap={!locked ? { scale: 0.95 } : {}}
                     onClick={() => handleLevelClick(level, index)}
                     className={`
-                        relative w-20 h-20 rounded-full flex items-center justify-center shadow-[0_8px_30px_rgb(0,0,0,0.12)] transition-all duration-300 border-[3px]
+                        relative w-24 h-24 rounded-full flex items-center justify-center shadow-[0_8px_30px_rgb(0,0,0,0.2)] transition-all duration-300 border-[4px]
                         ${locked 
                             ? "bg-gray-100 border-gray-200 text-gray-300 cursor-not-allowed" 
-                            : "bg-[#FDFBF7] border-indigo-100 text-indigo-600 hover:border-indigo-300 hover:shadow-[0_10px_40px_rgb(99,102,241,0.2)]"
+                            : `${level.color} border-white text-white hover:scale-110 hover:shadow-[0_0_20px_rgba(255,255,255,0.6)]`
                         }
-                        ${completed ? "ring-4 ring-green-50 ring-offset-2 border-green-200" : ""}
+                        ${completed ? "ring-4 ring-green-400 ring-offset-4" : ""}
                     `}
                 >
-                    {locked ? <Lock size={22} /> : <Icon size={28} strokeWidth={2} />}
+                    {locked ? <Lock size={28} /> : <Icon size={36} strokeWidth={2.5} className="drop-shadow-md" />}
                     
                     {/* Completion Badge */}
                     {completed && (

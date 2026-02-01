@@ -20,29 +20,31 @@ export default function Timeline() {
          <div className="relative border-l-2 border-blue-200 ml-6 space-y-12">
               {siteData.timeline.map((item, index) => {
                   const Icon = iconMap[item.icon] || Calendar;
-                  return (
-                      <motion.div 
-                          key={index}
-                          initial={{ opacity: 0, x: -20 }}
-                          whileInView={{ opacity: 1, x: 0 }}
-                          viewport={{ once: true }}
-                          transition={{ delay: index * 0.2 }}
-                          className="relative pl-8 cursor-pointer"
-                          onClick={() => setSelectedItem(item)}
-                      >
-                          {/* Dot */}
-                          <div className="absolute -left-[9px] top-1 bg-white border-4 border-blue-300 w-4 h-4 rounded-full" />
-                          
-                          <div className="flex flex-col gap-1 hover:bg-white/50 p-2 -ml-2 rounded-lg transition-colors">
-                              <span className="text-xs font-bold text-blue-400 uppercase tracking-wider">{item.date}</span>
-                              <div className="flex items-center gap-2">
-                                  <Icon size={16} className="text-gray-400" />
-                                  <h3 className="font-bold text-gray-800 text-lg">{item.title}</h3>
+                      return (
+                          <motion.div 
+                              key={index}
+                              initial={{ opacity: 0, x: -20 }}
+                              whileInView={{ opacity: 1, x: 0 }}
+                              viewport={{ once: true }}
+                              transition={{ delay: index * 0.2 }}
+                              className="relative pl-8"
+                          >
+                              {/* Dot */}
+                              <div className="absolute -left-[9px] top-1 bg-white border-4 border-blue-300 w-4 h-4 rounded-full z-10" />
+                              
+                              <div 
+                                onClick={() => setSelectedItem(item)}
+                                className="flex flex-col gap-1 hover:bg-white/60 p-3 -ml-2 rounded-xl transition-all cursor-pointer relative z-20 active:scale-95 shadow-sm hover:shadow-md border border-transparent hover:border-white/50"
+                              >
+                                  <span className="text-xs font-bold text-blue-500 uppercase tracking-wider">{item.date}</span>
+                                  <div className="flex items-center gap-2">
+                                      <Icon size={18} className="text-blue-400" />
+                                      <h3 className="font-bold text-gray-800 text-lg">{item.title}</h3>
+                                  </div>
+                                  <p className="text-gray-600 text-sm leading-relaxed">{item.description}</p>
                               </div>
-                              <p className="text-gray-500 text-sm leading-relaxed">{item.description}</p>
-                          </div>
-                      </motion.div>
-                  );
+                          </motion.div>
+                      );
               })}
               
               {/* Continuing Line Gradient */}

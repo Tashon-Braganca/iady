@@ -4,32 +4,38 @@ import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import { RefreshCw } from "lucide-react";
 import { motion } from "framer-motion";
+import MusicPlayer from "@/components/MusicPlayer";
 
 export default function FinalPage() {
   const router = useRouter();
   const [showReplay, setShowReplay] = useState(false);
 
   useEffect(() => {
-    // Show replay button after video ends or after some time
     const timer = setTimeout(() => setShowReplay(true), 10000); 
     return () => clearTimeout(timer);
   }, []);
 
   return (
     <div className="min-h-screen bg-black flex items-center justify-center relative overflow-hidden">
+      <MusicPlayer />
       
-      {/* Video Player */}
-      <video 
-        className="absolute inset-0 w-full h-full object-contain z-0"
-        autoPlay
-        playsInline
-        controls
-        src="/videos/the finale/PXL_20260201_162839765.mp4"
-      >
-        Your browser does not support the video tag.
-      </video>
+      {/* Video Player - Fixed rotation and aspect ratio */}
+      <div className="relative w-full h-full flex items-center justify-center">
+        <video 
+            className="max-w-full max-h-full w-auto h-auto shadow-2xl"
+            style={{
+                boxShadow: "0 0 50px rgba(0,0,0,0.5)"
+            }}
+            autoPlay
+            playsInline
+            controls
+            src="/videos/the finale/PXL_20260201_162839765.mp4"
+        >
+            Your browser does not support the video tag.
+        </video>
+      </div>
 
-      {/* Overlay controls if needed, or just the replay button */}
+      {/* Replay button */}
       {showReplay && (
         <motion.div 
             initial={{ opacity: 0 }}

@@ -44,7 +44,7 @@ export const siteData = {
       title: "VC Memories",
       icon: "Video",
       description: "Screenshots of us.",
-      color: "bg-gray-100",
+      color: "bg-indigo-500",
       accent: "blue",
       group: "The Beginning",
       previewImages: [
@@ -69,7 +69,7 @@ export const siteData = {
       title: "AOT Corner",
       icon: "Sword",
       description: "Dedicate your heart.",
-      color: "bg-green-900 text-white",
+      color: "bg-emerald-700",
       accent: "green",
       group: "Obsessions",
       previewImages: [
@@ -92,7 +92,7 @@ export const siteData = {
       title: "Times I Fell Hard",
       icon: "Heart", 
       description: "Moments my heart skipped a beat.",
-      color: "bg-red-50",
+      color: "bg-rose-500",
       accent: "red",
       group: "Romance",
       previewImages: [
@@ -117,7 +117,7 @@ export const siteData = {
       title: "White Lilies",
       icon: "Flower2",
       description: "Your favorite.",
-      color: "bg-white border border-gray-200",
+      color: "bg-purple-500",
       accent: "pink",
       group: "Little Things",
       previewImages: [
@@ -141,7 +141,7 @@ export const siteData = {
       title: "Sugar Rush",
       icon: "Candy",
       description: "Chocolates & Cheesecakes.",
-      color: "bg-pink-100",
+      color: "bg-pink-500",
       accent: "pink",
       previewImages: [
         "/photos/Sugar Rush/1.jpeg",
@@ -162,7 +162,7 @@ export const siteData = {
       title: "Food Passport",
       icon: "Utensils",
       description: "Indian, Indo-Chinese, Mexican.",
-      color: "bg-yellow-100",
+      color: "bg-amber-500",
       accent: "yellow",
       previewImages: [
         "/photos/Food Transport/1.jpg",
@@ -184,7 +184,7 @@ export const siteData = {
       title: "Binge Watch",
       icon: "Film",
       description: "Bollywood & Chai.",
-      color: "bg-red-100",
+      color: "bg-red-600",
       accent: "red",
       previewImages: [
         "/photos/Binge Watch/1.png",
@@ -206,7 +206,7 @@ export const siteData = {
       title: "Art Gallery",
       icon: "Palette",
       description: "Your masterpieces.",
-      color: "bg-purple-100",
+      color: "bg-violet-500",
       accent: "purple",
       previewImages: [
         "/photos/Art gallery/1.jpg",
@@ -229,7 +229,7 @@ export const siteData = {
       title: "Virtual Date",
       icon: "Coffee",
       description: "Valentine's Day Call 💕",
-      color: "bg-orange-100",
+      color: "bg-orange-500",
       accent: "orange",
       group: "Right Now",
       meetLink: "https://meet.google.com/qbx-rkcv-wxd",
@@ -251,7 +251,7 @@ export const siteData = {
       title: "The Hug",
       icon: "Smile",
       description: "AI Generated Warmth.",
-      color: "bg-teal-100",
+      color: "bg-teal-500",
       accent: "teal",
       group: "Until Real",
       previewImages: [
@@ -284,10 +284,19 @@ export const siteData = {
   
   videos: {
     kissie: [
-        { src: "/videos/kissie/VID-20250925-WA0039.mp4", poster: "/photos/Times I fell for you/1.jpg" },
+        { src: "/videos/kissie/VID-20250925-WA0039.mp4" },
+        { src: "/videos/kissie/VID-20251010-WA0041.mp4" },
+        { src: "/videos/kissie/VID-20251018-WA0031.mp4" },
+        { src: "/videos/kissie/PXL_20260106_170649482.mp4" },
+        { src: "/videos/kissie/WhatsApp Video 2026-02-01 at 9.20.22 PM.mp4" },
+        { src: "/videos/kissie/WhatsApp Video 2026-02-01 at 9.20.49 PM.mp4" },
     ],
     dance: [
-        { src: "/videos/dance/VID-20251213-WA0058.mp4", poster: "/photos/Times I fell for you/2.jpg" },
+        { src: "/videos/dance/VID-20251213-WA0058.mp4" },
+        { src: "/videos/dance/PXL_20260105_062453252.mp4" },
+        { src: "/videos/dance/WhatsApp Video 2026-02-01 at 9.20.29 PM.mp4" },
+        { src: "/videos/dance/WhatsApp Video 2026-02-01 at 9.20.41 PM.mp4" },
+        { src: "/videos/dance/WhatsApp Video 2026-02-01 at 9.20.48 PM.mp4" },
     ]
   },
 

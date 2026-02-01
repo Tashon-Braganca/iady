@@ -13,7 +13,6 @@ export default function CurvyPath({ items, renderItem, isMusicPlaying }: CurvyPa
   const containerRef = useRef<HTMLDivElement>(null);
   const [svgHeight, setSvgHeight] = useState(1000);
   
-  // Refined vertical spacing
   const START_Y = 50;
   const ITEM_SPACING = 160; 
 
@@ -22,17 +21,15 @@ export default function CurvyPath({ items, renderItem, isMusicPlaying }: CurvyPa
     offset: ["start center", "end center"]
   });
 
-  // Create a drawing effect that is slightly ahead of scroll
   const pathLength = useTransform(scrollYProgress, [0, 1], [0, 1.2]);
+  const trainOffset = useTransform(scrollYProgress, [0, 1], [0, 100]);
 
   useEffect(() => {
     setSvgHeight(items.length * ITEM_SPACING + 100);
   }, [items.length]);
 
-  // Generate a path that passes through the item centers
-  // Items are at: x = 25 or 75, y = START_Y + i * ITEM_SPACING
   const generateSnakePath = () => {
-    let path = `M 50 0`; // Start top center
+    let path = `M 50 0`;
 
     items.forEach((_, i) => {
         const isLeft = i % 2 === 0;
@@ -42,7 +39,6 @@ export default function CurvyPath({ items, renderItem, isMusicPlaying }: CurvyPa
         const prevY = i === 0 ? 0 : START_Y + (i - 1) * ITEM_SPACING;
         const prevX = i === 0 ? 50 : ( (i-1) % 2 === 0 ? 25 : 75 );
         
-        // Control points for smooth curve
         const cp1x = prevX;
         const cp1y = prevY + (y - prevY) * 0.5;
         
@@ -59,7 +55,7 @@ export default function CurvyPath({ items, renderItem, isMusicPlaying }: CurvyPa
 
   return (
     <div ref={containerRef} className="relative w-full max-w-lg mx-auto mb-24" style={{ height: svgHeight }}>
-      {/* SVG Path Layer */}
+      {/* SVG Path Layer - TRAIN TRACKS */}
       <svg 
         className="absolute top-0 left-0 w-full h-full pointer-events-none z-0 overflow-visible" 
         viewBox={`0 0 100 ${svgHeight}`} 
@@ -70,51 +66,94 @@ export default function CurvyPath({ items, renderItem, isMusicPlaying }: CurvyPa
              <motion.path 
                 d={d} 
                 stroke="#60A5FA" 
-                strokeWidth="12" 
+                strokeWidth="20" 
                 fill="none" 
                 strokeLinecap="round"
                 initial={{ opacity: 0 }}
-                animate={{ opacity: [0.2, 0.4, 0.2] }}
+                animate={{ opacity: [0.1, 0.3, 0.1] }}
                 transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
                 className="blur-xl"
             />
         )}
 
-        {/* 1. Stitched/Dotted Underlay (Sewing look) */}
+        {/* 1. Track Bed (Ballast) */}
         <path 
             d={d} 
-            stroke="#e2e8f0" 
-            strokeWidth="3" 
+            stroke="#e5e7eb" 
+            strokeWidth="12" 
             fill="none" 
             strokeLinecap="round"
+            opacity="0.5"
         />
+
+        {/* 2. Sleepers (Wooden Ties) - Dashed Line */}
         <path 
             d={d} 
-            stroke="#94a3b8" 
-            strokeWidth="1.5" 
+            stroke="#5D4037" 
+            strokeWidth="8" 
             fill="none" 
-            strokeDasharray="2 6"
-            strokeLinecap="round"
-            className="opacity-40"
+            strokeLinecap="butt"
+            strokeDasharray="1 3"
         />
         
-        {/* 2. Progress Path (Pastel Gradient feel via solid color for now, can use gradient defs if needed) */}
-        {/* Using a nice pastel blue/indigo */}
+        {/* 3. Rails (Steel) */}
+        <path 
+            d={d} 
+            stroke="#374151" 
+            strokeWidth="0.5" 
+            fill="none" 
+            strokeLinecap="round"
+            transform="translate(-2.5, 0)"
+        />
+        <path 
+            d={d} 
+            stroke="#374151" 
+            strokeWidth="0.5" 
+            fill="none" 
+            strokeLinecap="round"
+            transform="translate(2.5, 0)"
+        />
+
+        {/* 4. Progress Fill (Golden/Magical) */}
         <motion.path 
             d={d} 
-            stroke="#818cf8" 
-            strokeWidth="3" 
+            stroke="#F59E0B" 
+            strokeWidth="1.5" 
             fill="none" 
             strokeLinecap="round"
             style={{ pathLength }}
             className="drop-shadow-sm"
+            transform="translate(-2.5, 0)"
+        />
+        <motion.path 
+            d={d} 
+            stroke="#F59E0B" 
+            strokeWidth="1.5" 
+            fill="none" 
+            strokeLinecap="round"
+            style={{ pathLength }}
+            className="drop-shadow-sm"
+            transform="translate(2.5, 0)"
         />
       </svg>
+
+      {/* Animated Train */}
+      <motion.div
+        className="absolute z-[5] drop-shadow-xl"
+        style={{
+          offsetPath: `path('${d}')`,
+          offsetDistance: trainOffset,
+          offsetRotate: 'auto', // Rotates with path
+          fontSize: '4rem', // Bigger train
+        }}
+      >
+        <div style={{ transform: 'rotate(90deg) translateY(-5px)' }}>🚂</div> 
+      </motion.div>
 
       {/* Items Layer */}
       {items.map((item, index) => {
         const isLeft = index % 2 === 0;
-        const xPos = isLeft ? 25 : 75; // %
+        const xPos = isLeft ? 25 : 75;
         const yPos = START_Y + index * ITEM_SPACING;
         
         return (
