@@ -81,75 +81,87 @@ export default function CurvyPath({ items, renderItem, isMusicPlaying }: CurvyPa
         <path 
             d={d} 
             stroke="#e5e7eb" 
-            strokeWidth="12" 
+            strokeWidth="14" 
             fill="none" 
             strokeLinecap="round"
-            opacity="0.5"
+            opacity="0.8"
         />
 
-        {/* 2. Sleepers (Wooden Ties) - Dashed Line */}
+        {/* 2. Sleepers (Wooden Ties) */}
+        {/* Using a thicker dashed line to simulate sleepers */}
         <path 
             d={d} 
             stroke="#5D4037" 
-            strokeWidth="8" 
+            strokeWidth="10" 
             fill="none" 
             strokeLinecap="butt"
-            strokeDasharray="1 3"
+            strokeDasharray="1 4"
         />
         
         {/* 3. Rails (Steel) */}
         <path 
             d={d} 
             stroke="#374151" 
-            strokeWidth="0.5" 
+            strokeWidth="0.8" 
             fill="none" 
             strokeLinecap="round"
-            transform="translate(-2.5, 0)"
+            transform="translate(-3, 0)"
         />
         <path 
             d={d} 
             stroke="#374151" 
-            strokeWidth="0.5" 
+            strokeWidth="0.8" 
             fill="none" 
             strokeLinecap="round"
-            transform="translate(2.5, 0)"
+            transform="translate(3, 0)"
         />
 
         {/* 4. Progress Fill (Golden/Magical) */}
         <motion.path 
             d={d} 
             stroke="#F59E0B" 
-            strokeWidth="1.5" 
+            strokeWidth="2" 
             fill="none" 
             strokeLinecap="round"
             style={{ pathLength }}
             className="drop-shadow-sm"
-            transform="translate(-2.5, 0)"
+            transform="translate(-3, 0)"
         />
         <motion.path 
             d={d} 
             stroke="#F59E0B" 
-            strokeWidth="1.5" 
+            strokeWidth="2" 
             fill="none" 
             strokeLinecap="round"
             style={{ pathLength }}
             className="drop-shadow-sm"
-            transform="translate(2.5, 0)"
+            transform="translate(3, 0)"
         />
-      </svg>
 
-      {/* Animated Train */}
-      <motion.div
-        className="absolute z-[5] drop-shadow-xl"
-        style={{
-          offsetPath: `path('${d}')`,
-          offsetDistance: trainOffset,
-          offsetRotate: 'auto', // Rotates with path
-          fontSize: '4rem', // Bigger train
-        }}
-      >
-        <div style={{ transform: 'rotate(90deg) translateY(-5px)' }}>🚂</div> 
-      </motion.div>
+        {/* 5. Animated Train (INSIDE SVG to match coordinates) */}
+        <motion.g
+            style={{
+                offsetPath: `path('${d}')`,
+                offsetDistance: trainOffset,
+                offsetRotate: 'auto',
+            }}
+        >
+            {/* The train emoji centered on the path */}
+            {/* transform origin center to ensure it rotates correctly */}
+            <text 
+                x="0" 
+                y="0" 
+                fontSize="15" 
+                textAnchor="middle" 
+                dominantBaseline="middle"
+                transform="rotate(90)" 
+                style={{ filter: "drop-shadow(0px 2px 4px rgba(0,0,0,0.3))" }}
+            >
+                🚂
+            </text>
+        </motion.g>
+
+      </svg>
 
       {/* Items Layer */}
       {items.map((item, index) => {
