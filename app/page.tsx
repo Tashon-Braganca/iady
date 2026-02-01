@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
 import { Lock, Heart, Key } from "lucide-react";
@@ -14,13 +14,11 @@ export default function LoginPage() {
   const [loading, setLoading] = useState(false);
   const router = useRouter();
   const { togglePlay, isPlaying } = useMusic(); // Get music toggle function and state
-
-  // Clear session on mount to force re-login if they visit the root URL
-  useState(() => {
-     if (typeof window !== "undefined") {
-         sessionStorage.removeItem("is_authenticated");
-     }
-  });
+  
+  // Clear session on mount to force re-login
+  useEffect(() => {
+     sessionStorage.removeItem("is_authenticated");
+  }, []);
 
   const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault();

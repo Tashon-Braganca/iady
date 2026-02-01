@@ -6,12 +6,12 @@ import { useRouter, usePathname } from "next/navigation";
 export default function AuthCheck({ children }: { children: React.ReactNode }) {
   const router = useRouter();
   const pathname = usePathname();
-  const [isAuthorized, setIsAuthorized] = useState(false);
+  const [isChecked, setIsChecked] = useState(false);
 
   useEffect(() => {
-    // 1. If we are on the login page, we don't need to check auth
+    // 1. If we are on the login page, allow immediately
     if (pathname === "/") {
-      setIsAuthorized(true);
+      setIsChecked(true);
       return;
     }
 
@@ -22,14 +22,18 @@ export default function AuthCheck({ children }: { children: React.ReactNode }) {
       // If no access, kick back to login
       router.replace("/");
     } else {
-      // Access granted
-      setIsAuthorized(true);
+      setIsChecked(true);
     }
   }, [pathname, router]);
 
-  // Prevent flashing of protected content
-  if (!isAuthorized && pathname !== "/") {
-    return null; // Or a loading spinner
+  // Always render if on home page, otherwise wait for check
+  if (pathname === "/") {
+    return <>{children}</>;
+  }
+
+  // For other pages, show nothing until checked (prevents flashing content)
+  if (!isChecked) {
+    return null; 
   }
 
   return <>{children}</>;
