@@ -17,25 +17,25 @@ export default function BackgroundLayer() {
       {/* 1. Base Paper Texture Color */}
       <div className="absolute inset-0 bg-[#FDFBF7]" />
 
-      {/* 2. Paper Grain / Noise */}
+      {/* 2. Photo Collage Background - Improved Visibility */}
       <div 
         className="absolute inset-0 bg-cover bg-center transition-opacity duration-1000"
         style={{ 
             backgroundImage: "url('/bg/Brown Autumn Photo Collage.png')",
-            opacity: 0.12,
-            filter: "blur(1.5px) saturate(0.95)"
+            opacity: 0.45, // Increased from 0.12
+            filter: "blur(0px) saturate(1.1) brightness(1.05)" // Removed blur, slightly boosted colors
         }}
       />
 
-      {/* 3. Subtle Vignette */}
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_transparent_0%,_rgba(0,0,0,0.03)_100%)]" />
+      {/* 3. Subtle Vignette (Lighter now) */}
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_transparent_0%,_rgba(255,255,255,0.4)_50%,_rgba(253,251,247,0.8)_100%)]" />
 
       {/* 4. Floating Hearts (Background Ambiance) */}
       <div className="absolute inset-0 overflow-hidden">
         {[...Array(6)].map((_, i) => (
             <motion.div
                 key={i}
-                className="absolute text-pink-100/40"
+                className="absolute text-pink-200/60" // Slightly more visible hearts
                 initial={{
                     x: Math.random() * (typeof window !== 'undefined' ? window.innerWidth : 1000),
                     y: Math.random() * (typeof window !== 'undefined' ? window.innerHeight : 1000),
