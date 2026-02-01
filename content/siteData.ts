@@ -5,7 +5,7 @@ export const siteData = {
     coupleName: "Adyasha & Me",
     password: "i love you",
     passwordHint: "A three letter word (phrase)",
-    musicUrl: "/audio/theme.mp3",
+    musicUrl: "/audio/BIRDS OF A FEATHER - Billie Eilish free mp3.mp3",
   },
   
   hero: {
