@@ -47,8 +47,6 @@ export default function LoginPage() {
       }
       
       setErrorCount((prev) => prev + 1);
-      setLoading(false);
-      setErrorCount((prev) => prev + 1);
       
       const messages = [
         "Nope, try again cutie!",
@@ -71,22 +69,29 @@ export default function LoginPage() {
   };
 
   return (
-    <div className="min-h-screen flex flex-col items-center justify-center bg-blue-50 relative overflow-hidden">
-        {/* Background Decorative Elements */}
+    <div className="min-h-screen flex flex-col items-center justify-center bg-pink-50 relative overflow-hidden">
+        {/* Background Decorative Elements - Minimal Emojis */}
         <div className="absolute top-0 left-0 w-full h-full pointer-events-none overflow-hidden">
              <motion.div 
-                animate={{ y: [0, -20, 0], opacity: [0.3, 0.6, 0.3] }}
+                animate={{ y: [0, -20, 0], rotate: [0, 10, 0] }}
                 transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
-                className="absolute top-10 left-10 text-blue-200"
+                className="absolute top-20 left-20 text-4xl"
             >
-                <Heart size={100} fill="currentColor" />
+                💌
             </motion.div>
              <motion.div 
-                animate={{ y: [0, 20, 0], opacity: [0.2, 0.5, 0.2] }}
+                animate={{ y: [0, 20, 0], rotate: [0, -10, 0] }}
                 transition={{ duration: 7, repeat: Infinity, ease: "easeInOut" }}
-                className="absolute bottom-20 right-10 text-pink-200"
+                className="absolute bottom-32 right-20 text-4xl"
             >
-                <Heart size={150} fill="currentColor" />
+                🧸
+            </motion.div>
+            <motion.div 
+                animate={{ scale: [1, 1.2, 1] }}
+                transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
+                className="absolute top-1/3 right-1/4 text-2xl opacity-50"
+            >
+                ❤️
             </motion.div>
         </div>
 
@@ -94,14 +99,14 @@ export default function LoginPage() {
         initial={{ opacity: 0, scale: 0.9 }}
         animate={{ opacity: 1, scale: 1 }}
         transition={{ duration: 0.5 }}
-        className="bg-white/80 backdrop-blur-xl p-8 rounded-3xl shadow-2xl w-full max-w-md mx-4 z-10 border border-white/50"
+        className="bg-white/90 backdrop-blur-xl p-8 rounded-3xl shadow-xl w-full max-w-md mx-4 z-10 border border-pink-100"
       >
         <div className="text-center mb-8">
-          <div className="bg-blue-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4 text-primary">
-            <Lock size={32} />
+          <div className="bg-pink-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4 text-pink-500">
+            <Heart size={32} fill="currentColor" />
           </div>
-          <h1 className="text-2xl font-bold text-gray-800 mb-2">Welcome Home</h1>
-          <p className="text-gray-500 text-sm">{siteData.general.passwordHint}</p>
+          <h1 className="text-2xl font-serif font-bold text-gray-800 mb-2">Welcome Home, Adyasha</h1>
+          <p className="text-gray-500 text-sm italic">{siteData.general.passwordHint}</p>
         </div>
 
         <form onSubmit={handleLogin} className="space-y-4">

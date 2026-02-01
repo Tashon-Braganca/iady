@@ -1,8 +1,6 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono, Patrick_Hand } from "next/font/google";
 import "./globals.css";
-import BackgroundLayer from "@/components/BackgroundLayer";
-import StickerLayer from "@/components/StickerLayer";
 import AuthCheck from "@/components/AuthCheck";
 import { MusicProvider } from "@/lib/MusicContext";
 
@@ -38,8 +36,6 @@ export default function RootLayout({
         className={`${geistSans.variable} ${geistMono.variable} ${patrickHand.variable} antialiased bg-[#FDFBF7]`}
       >
         <MusicProvider>
-          <BackgroundLayer />
-          <StickerLayer />
           <AuthCheck>
             {children}
           </AuthCheck>

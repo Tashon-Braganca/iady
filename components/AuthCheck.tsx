@@ -2,6 +2,8 @@
 
 import { useEffect, useState } from "react";
 import { useRouter, usePathname } from "next/navigation";
+import BackgroundLayer from "@/components/BackgroundLayer";
+import StickerLayer from "@/components/StickerLayer";
 
 export default function AuthCheck({ children }: { children: React.ReactNode }) {
   const router = useRouter();
@@ -26,15 +28,21 @@ export default function AuthCheck({ children }: { children: React.ReactNode }) {
     }
   }, [pathname, router]);
 
-  // Always render if on home page, otherwise wait for check
+  // LOGIN PAGE (Root): No Background, No Stickers, Just Clean Page
   if (pathname === "/") {
     return <>{children}</>;
   }
 
-  // For other pages, show nothing until checked (prevents flashing content)
+  // PROTECTED PAGES: Wait for check, then show full UI
   if (!isChecked) {
     return null; 
   }
 
-  return <>{children}</>;
+  return (
+    <>
+        <BackgroundLayer />
+        <StickerLayer />
+        {children}
+    </>
+  );
 }
