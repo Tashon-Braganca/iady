@@ -304,17 +304,17 @@ export const siteData = {
     {
       id: "love",
       title: "To My Kitten",
-      content: "Distance means nothing when you mean everything. You are the most beautiful person I know, inside and out. Every day with you is a blessing."
+      content: "My love, being with you has changed my world in the most beautiful way. Even when though we are apart, I feel close to you in my heart. Your smile makes my hard days softer, and your voice brings me peace I never knew I needed. You are kind, warm, and so beautiful, inside and out. I love the way you care, the way you laugh, and the way you make ordinary moments feel special.  I am so thankful for you, and I cherish every memory we have  together. I love you my pugu you mean the world to me."
     },
     {
       id: "vows",
       title: "My Promises",
-      content: "I promise to never break your trust. No lies, ever. I will never raise my voice at you. Loyalty forever. I will never leave you hanging."
+      content: "I promise to always be honest with you and to treat your heart with care. I will stand by you during good days and hard ones too. I promise to listen to you and drown in your words. I will support your dreams and remind you how strong and amazing you are. I promise to stay patient,  to grow with you, not away from you. My loyalty is real, and my effort will always show in the way I love you.\nYou are mine right now and always will be mine till we are 70 and old."
     },
     {
       id: "roast",
-      title: "Why I Put Up With You",
-      content: "Insert inside jokes here... e.g., 'Even though you steal my hoodies...'"
+      title: "To My Forever",
+      content: "When I think about the future, I see you there with me. I imagine quiet mornings, shared meals, long talks, and laughter filling our home, those three dogs that you want to cook so bad and two little kids (defn both daugthers) who will share your laughter and have the smile that made me fall for you . I want to build a life where we both feel safe, valued, and deeply loved. You are not just someone I love today, you are someone I want beside me in all the days to come. I look forward to the memories we have not made yet, the places we will go, and the dreams we will chase together. My heart feels at home when it is with you. \nTo you my forever so these are t"
     }
   ],
   
