@@ -67,33 +67,37 @@ export default function Timeline() {
               initial={{ scale: 0.8, opacity: 0 }}
               animate={{ scale: 1, opacity: 1 }}
               exit={{ scale: 0.8, opacity: 0 }}
-              className="fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-[100] bg-white rounded-2xl p-6 shadow-2xl max-w-sm w-[90vw]"
+              className="fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-[100] bg-white rounded-2xl p-4 shadow-2xl w-auto max-w-[90vw] overflow-hidden flex flex-col"
             >
               <button
                 onClick={() => setSelectedItem(null)}
-                className="absolute top-4 right-4 p-2 bg-gray-100 rounded-full hover:bg-gray-200 transition-colors"
+                className="absolute top-2 right-2 p-2 bg-white/80 backdrop-blur-sm rounded-full hover:bg-gray-100 transition-colors z-10 shadow-sm"
               >
                 <X size={20} />
               </button>
 
-              <div className="w-full h-64 bg-gray-100 rounded-xl overflow-hidden mb-4 flex items-center justify-center">
+              {/* Image Container - Width defined by image */}
+              <div className="relative rounded-xl overflow-hidden shadow-inner mb-4 flex-shrink-0" style={{ maxHeight: '60vh' }}>
                 <img 
                   src={selectedItem.image} 
                   alt={selectedItem.title}
-                  className="max-w-full max-h-full object-contain"
+                  className="w-auto h-auto max-h-[60vh] object-contain mx-auto"
                 />
               </div>
 
-              <div className="flex items-center gap-2 mb-2">
-                {(() => {
-                  const Icon = iconMap[selectedItem.icon] || Calendar;
-                  return <Icon size={20} className="text-blue-400" />;
-                })()}
-                <span className="text-xs font-bold text-blue-400 uppercase tracking-wider">{selectedItem.date}</span>
-              </div>
+              {/* Content - Fits width of card (which is width of image + padding) */}
+              <div className="flex flex-col gap-1 min-w-[280px]">
+                  <div className="flex items-center gap-2 mb-1">
+                    {(() => {
+                      const Icon = iconMap[selectedItem.icon] || Calendar;
+                      return <Icon size={18} className="text-blue-400" />;
+                    })()}
+                    <span className="text-xs font-bold text-blue-400 uppercase tracking-wider">{selectedItem.date}</span>
+                  </div>
 
-              <h3 className="text-2xl font-bold text-gray-800 mb-2">{selectedItem.title}</h3>
-              <p className="text-gray-600">{selectedItem.description}</p>
+                  <h3 className="text-xl font-bold text-gray-800 leading-tight">{selectedItem.title}</h3>
+                  <p className="text-gray-600 text-sm mt-1">{selectedItem.description}</p>
+              </div>
             </motion.div>
           </>
         )}

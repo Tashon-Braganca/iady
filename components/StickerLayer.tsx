@@ -74,15 +74,15 @@ export default function StickerLayer() {
                 top: `${s.y}%`,
             }}
             initial={{ opacity: 0, scale: 0 }}
-            animate={{ opacity: 0.6, scale: s.scale, rotate: s.rotate }}
+            animate={{ opacity: 1, scale: s.scale, rotate: s.rotate }}
             transition={{ duration: 1, delay: s.id * 0.1 }}
-            whileHover={{ scale: s.scale * 1.2, rotate: 0, opacity: 1 }}
+            whileHover={{ scale: s.scale * 1.2, rotate: 0 }}
         >
             {s.content.type === 'image' ? (
-                <img src={s.content.src} alt="sticker" className="w-20 h-20 object-contain drop-shadow-md opacity-80" />
+                <img src={s.content.src} alt="sticker" className="w-24 h-24 object-contain drop-shadow-lg" />
             ) : (
-                <div className={`${s.content.color} opacity-40 drop-shadow-sm`}>
-                    <s.content.Icon size={48} strokeWidth={1.5} />
+                <div className={`${s.content.color} drop-shadow-md`}>
+                    <s.content.Icon size={56} strokeWidth={2} />
                 </div>
             )}
         </motion.div>
