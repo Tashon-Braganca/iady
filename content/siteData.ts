@@ -38,7 +38,7 @@ export const siteData = {
   ],
 
   levels: [
-    // 1. VC Memories (Moved to First)
+    // 1. VC Memories (First)
     {
       id: "vc",
       title: "VC Memories",
@@ -144,7 +144,7 @@ export const siteData = {
       }
     },
 
-    // 6. Food Passport (Folder: Food Transport)
+    // 6. Food Passport
     {
       id: "food",
       title: "Food Passport",
@@ -204,7 +204,7 @@ export const siteData = {
       }
     },
 
-    // 9. Virtual Date (Moved to Second Last) + GMeet Link
+    // 9. Virtual Date (Second Last) + GMeet
     {
       id: "date-night",
       title: "Virtual Date",
@@ -213,9 +213,9 @@ export const siteData = {
       color: "bg-orange-100",
       accent: "orange",
       group: "Right Now",
-      meetLink: "https://meet.google.com/abc-defg-hij", // REPLACE THIS with your actual link
+      meetLink: "https://meet.google.com/abc-defg-hij", 
       previewImages: [
-        "/photos/Virtual Date/1.jpg", // Ensure this folder exists or rename from "date-night"
+        "/photos/Virtual Date/1.jpg",
         "/photos/Virtual Date/2.jpg"
       ],
       memoryNotes: ["I'm waiting...", "Click the button!"],
@@ -248,9 +248,9 @@ export const siteData = {
     }
   ],
 
-  // Keep existing Gallery logic (random placeholders) or update if needed
+  // Placeholder for gallery: User must add images to public/photos/gallery/
   gallery: Array.from({ length: 30 }, (_, i) => ({
-      src: `/photos/gallery-${i + 1}.jpg`,
+      src: `/photos/gallery/gallery-${i + 1}.jpg`,
       alt: "Us"
   })),
   
