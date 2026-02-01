@@ -10,6 +10,7 @@ import Timeline from "@/components/Timeline";
 import BucketList from "@/components/BucketList";
 import CurvyPath from "@/components/CurvyPath";
 import LevelBottomSheet from "@/components/LevelBottomSheet";
+import { useMusic } from "@/lib/MusicContext";
 
 // Map icon strings to components
 const iconMap: any = {
@@ -19,9 +20,9 @@ const iconMap: any = {
 
 export default function PathPage() {
   const router = useRouter();
+  const { isPlaying: isMusicPlaying } = useMusic();
   const [completedLevels, setCompletedLevels] = useState<string[]>([]);
   const [selectedLevel, setSelectedLevel] = useState<any>(null);
-  const [isMusicPlaying, setIsMusicPlaying] = useState(false);
   const [showToast, setShowToast] = useState<{message: string, visible: boolean}>({ message: "", visible: false });
   
   // Load progress
@@ -141,7 +142,7 @@ export default function PathPage() {
 
   return (
     <div className="min-h-screen pb-32 relative overflow-x-hidden selection:bg-pink-100">
-       <MusicPlayer onPlayChange={setIsMusicPlaying} />
+       <MusicPlayer />
        
        {/* Sticky Mini Header */}
        <div className="fixed top-0 left-0 right-0 z-40 px-6 py-4 pointer-events-none">

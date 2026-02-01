@@ -1,71 +1,11 @@
 "use client";
 
-import { useState, useEffect, useRef } from "react";
 import { Volume2, VolumeX, Music, Disc } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
-import { siteData } from "@/content/siteData";
+import { useMusic } from "@/lib/MusicContext";
 
-interface MusicPlayerProps {
-    onPlayChange?: (isPlaying: boolean) => void;
-}
-
-export default function MusicPlayer({ onPlayChange }: MusicPlayerProps) {
-  const [isPlaying, setIsPlaying] = useState(false);
-  const [isMuted, setIsMuted] = useState(false);
-  const audioRef = useRef<HTMLAudioElement | null>(null);
-
-  useEffect(() => {
-    // Initialize audio
-    audioRef.current = new Audio(siteData.general.musicUrl);
-    audioRef.current.loop = true;
-
-    // Check localStorage (but don't autoplay)
-    const savedState = localStorage.getItem("musicPlaying");
-    // We intentionally ignore savedState for autoplay due to browser policies
-    // but we can set up the UI state if we wanted (optional)
-
-    return () => {
-      if (audioRef.current) {
-        audioRef.current.pause();
-        audioRef.current = null;
-      }
-    };
-  }, []);
-
-  // Sync state with parent
-  useEffect(() => {
-      onPlayChange?.(isPlaying);
-  }, [isPlaying, onPlayChange]);
-
-  const togglePlay = () => {
-    if (!audioRef.current) return;
-
-    if (isPlaying) {
-      audioRef.current.pause();
-      setIsPlaying(false);
-      localStorage.setItem("musicPlaying", "false");
-    } else {
-      const playPromise = audioRef.current.play();
-      if (playPromise !== undefined) {
-        playPromise
-            .then(() => {
-                setIsPlaying(true);
-                localStorage.setItem("musicPlaying", "true");
-            })
-            .catch((e) => {
-                console.error("Playback error:", e);
-                // Maybe show a toast or UI feedback here
-            });
-      }
-    }
-  };
-
-  const toggleMute = (e: React.MouseEvent) => {
-    e.stopPropagation();
-    if (!audioRef.current) return;
-    audioRef.current.muted = !isMuted;
-    setIsMuted(!isMuted);
-  };
+export default function MusicPlayer() {
+  const { isPlaying, togglePlay, isMuted, toggleMute } = useMusic();
 
   return (
     <div className="fixed bottom-6 right-6 z-[100]">

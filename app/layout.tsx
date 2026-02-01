@@ -3,6 +3,7 @@ import { Geist, Geist_Mono, Patrick_Hand } from "next/font/google";
 import "./globals.css";
 import BackgroundLayer from "@/components/BackgroundLayer";
 import StickerLayer from "@/components/StickerLayer";
+import { MusicProvider } from "@/lib/MusicContext";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -35,9 +36,11 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} ${patrickHand.variable} antialiased bg-[#FDFBF7]`}
       >
-        <BackgroundLayer />
-        <StickerLayer />
-        {children}
+        <MusicProvider>
+          <BackgroundLayer />
+          <StickerLayer />
+          {children}
+        </MusicProvider>
       </body>
     </html>
   );
