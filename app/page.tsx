@@ -1,65 +1,128 @@
-import Image from "next/image";
+"use client";
 
-export default function Home() {
+import { useState } from "react";
+import { useRouter } from "next/navigation";
+import { motion, AnimatePresence } from "framer-motion";
+import { Lock, Heart, Key } from "lucide-react";
+import { siteData } from "@/content/siteData";
+
+export default function LoginPage() {
+  const [password, setPassword] = useState("");
+  const [errorCount, setErrorCount] = useState(0);
+  const [message, setMessage] = useState("");
+  const [loading, setLoading] = useState(false);
+  const router = useRouter();
+
+  const handleLogin = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setLoading(true);
+
+    const res = await fetch("/api/unlock", {
+      method: "POST",
+      body: JSON.stringify({ password: password.toLowerCase().trim() }),
+      headers: { "Content-Type": "application/json" },
+    });
+
+    if (res.ok) {
+      router.push("/path");
+    } else {
+      setLoading(false);
+      setErrorCount((prev) => prev + 1);
+      
+      const messages = [
+        "Nope, try again cutie!",
+        "Think harder...",
+        "It's a very simple phrase.",
+        "You say it to me often.",
+        "Remember: 3 words.",
+        "Still wrong? 😭",
+        "Come on, you know this!",
+      ];
+
+      if (errorCount >= 7) {
+        setMessage("ok budha focus 😭");
+      } else {
+        setMessage(messages[Math.floor(Math.random() * messages.length)]);
+      }
+      
+      // Shake animation trigger (handled by framer motion key)
+    }
+  };
+
   return (
-    <div className="flex min-h-screen items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex min-h-screen w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.tsx file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
+    <div className="min-h-screen flex flex-col items-center justify-center bg-blue-50 relative overflow-hidden">
+        {/* Background Decorative Elements */}
+        <div className="absolute top-0 left-0 w-full h-full pointer-events-none overflow-hidden">
+             <motion.div 
+                animate={{ y: [0, -20, 0], opacity: [0.3, 0.6, 0.3] }}
+                transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
+                className="absolute top-10 left-10 text-blue-200"
             >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
+                <Heart size={100} fill="currentColor" />
+            </motion.div>
+             <motion.div 
+                animate={{ y: [0, 20, 0], opacity: [0.2, 0.5, 0.2] }}
+                transition={{ duration: 7, repeat: Infinity, ease: "easeInOut" }}
+                className="absolute bottom-20 right-10 text-pink-200"
             >
-              Learning
-            </a>{" "}
-            center.
-          </p>
+                <Heart size={150} fill="currentColor" />
+            </motion.div>
         </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
+
+      <motion.div
+        initial={{ opacity: 0, scale: 0.9 }}
+        animate={{ opacity: 1, scale: 1 }}
+        transition={{ duration: 0.5 }}
+        className="bg-white/80 backdrop-blur-xl p-8 rounded-3xl shadow-2xl w-full max-w-md mx-4 z-10 border border-white/50"
+      >
+        <div className="text-center mb-8">
+          <div className="bg-blue-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4 text-primary">
+            <Lock size={32} />
+          </div>
+          <h1 className="text-2xl font-bold text-gray-800 mb-2">Welcome Home</h1>
+          <p className="text-gray-500 text-sm">{siteData.general.passwordHint}</p>
+        </div>
+
+        <form onSubmit={handleLogin} className="space-y-4">
+          <div className="relative">
+            <input
+              type="password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              placeholder="Enter the magic words..."
+              className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none transition-all bg-white/50"
+              autoFocus
             />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
+            <div className="absolute right-3 top-3 text-gray-400">
+                <Key size={20} />
+            </div>
+          </div>
+
+          <AnimatePresence>
+            {message && (
+              <motion.p
+                key={message} // triggers animation on change
+                initial={{ opacity: 0, y: -10 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0 }}
+                className="text-red-400 text-sm text-center font-medium"
+              >
+                {message}
+              </motion.p>
+            )}
+          </AnimatePresence>
+
+          <motion.button
+            whileHover={{ scale: 1.02 }}
+            whileTap={{ scale: 0.98 }}
+            disabled={loading}
+            className="w-full bg-primary hover:bg-sky-400 text-white font-bold py-3 rounded-xl transition-colors shadow-lg shadow-blue-200"
+            type="submit"
           >
-            Documentation
-          </a>
-        </div>
-      </main>
+            {loading ? "Unlocking..." : "Open My Heart"}
+          </motion.button>
+        </form>
+      </motion.div>
     </div>
   );
 }
