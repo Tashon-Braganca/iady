@@ -228,19 +228,19 @@ export const siteData = {
       id: "date-night",
       title: "Virtual Date",
       icon: "Coffee",
-      description: "Call me now...",
+      description: "Valentine's Day Call 💕",
       color: "bg-orange-100",
       accent: "orange",
       group: "Right Now",
-      meetLink: "https://meet.google.com/your-meeting-code", // REPLACE WITH YOUR ACTUAL LINK
+      meetLink: "https://meet.google.com/qbx-rkcv-wxd",
       previewImages: [
         "/photos/The Cold DM/1.jpg",
         "/photos/The Cold DM/main.png"
       ],
-      memoryNotes: ["I'm waiting for you!", "Pick up!"],
+      memoryNotes: ["February 14-15, 2026", "I'm waiting for you!", "Our Valentine's Date"],
       content: {
-        title: "Let's Talk",
-        text: "Click the button to join our virtual coffee date.",
+        title: "Valentine's Day Date",
+        text: "Click the button to join our virtual coffee date. February 14-15, 2026.",
         image: "/photos/The Cold DM/main.png",
       }
     },
