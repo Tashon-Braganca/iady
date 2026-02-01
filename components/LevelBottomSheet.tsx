@@ -1,8 +1,8 @@
 "use client";
 
-import { useEffect, useRef } from "react";
+import { useRef, useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { X, PlayCircle, Lock, Calendar, MapPin, Smile } from "lucide-react";
+import { X, PlayCircle, Lock, Phone } from "lucide-react";
 
 interface LevelBottomSheetProps {
   isOpen: boolean;
@@ -41,6 +41,14 @@ export default function LevelBottomSheet({
     }, [isOpen]);
 
     if (!level) return null;
+
+    const handleAction = () => {
+        if (level.meetLink) {
+            window.open(level.meetLink, '_blank');
+        } else {
+            onOpenLevel();
+        }
+    };
 
     return (
         <AnimatePresence>
@@ -146,15 +154,15 @@ export default function LevelBottomSheet({
                                     Later
                                 </button>
                                 <button
-                                    onClick={onOpenLevel}
+                                    onClick={handleAction}
                                     disabled={isLocked}
                                     className={`
                                         flex-1 py-4 rounded-xl font-bold text-white shadow-lg hover:shadow-xl transition-all flex items-center justify-center gap-2
-                                        ${isLocked ? "bg-gray-300 cursor-not-allowed" : "bg-gray-900 hover:scale-[1.02]"}
+                                        ${isLocked ? "bg-gray-300 cursor-not-allowed" : level.meetLink ? "bg-green-600 hover:bg-green-700 hover:scale-[1.02]" : "bg-gray-900 hover:scale-[1.02]"}
                                     `}
                                 >
-                                    {isLocked ? <Lock size={18} /> : <PlayCircle size={18} />}
-                                    {isLocked ? "Locked" : "Open Memory"}
+                                    {isLocked ? <Lock size={18} /> : level.meetLink ? <Phone size={18} /> : <PlayCircle size={18} />}
+                                    {isLocked ? "Locked" : level.meetLink ? "Call Now 📞" : "Open Memory"}
                                 </button>
                             </div>
                         </div>

@@ -19,66 +19,48 @@ export const siteData = {
       title: "The Cold DM", 
       icon: "Instagram", 
       description: "Where it all started...",
-      image: "/photos/Screenshot_20250831-125140.jpg" 
+      image: "/photos/The Cold DM/1.jpg" 
     },
     { 
       date: "Sept 28", 
       title: "Officially Us", 
       icon: "Heart", 
       description: "The start of forever.",
-      image: "/photos/IMG-20250929-WA0016.jpg"
+      image: "/photos/Officialy Us/1.jpg"
     },
     { 
       date: "Oct 1", 
       title: "First 'I Love You'", 
       icon: "Lock", 
       description: "Locked in.",
-      image: "/photos/IMG-20251004-WA0011.jpg"
+      image: "/photos/First I Love You/1.jpg"
     },
   ],
 
   levels: [
+    // 1. VC Memories (Moved to First)
     {
-      id: "date-night",
-      title: "Virtual Date",
-      icon: "Coffee",
-      description: "Cafe hopping online & chill.",
-      color: "bg-orange-100",
-      accent: "orange",
+      id: "vc",
+      title: "VC Memories",
+      icon: "Video",
+      description: "Screenshots of us.",
+      color: "bg-gray-100",
+      accent: "blue",
       group: "The Beginning",
       previewImages: [
-        "/photos/20251214_164045-IMG_STYLE.jpg",
-        "/photos/IMG-20251004-WA0012.jpg",
-        "/photos/IMG-20251004-WA0013.jpg",
-        "/photos/IMG-20251004-WA0017.jpg"
+        "/photos/Vc Memories/1.jpg",
+        "/photos/Vc Memories/2.jpg",
+        "/photos/Vc Memories/3.jpg"
       ],
-      memoryNotes: ["Our first coffee date", "Late night talks", "Choosing our menu"],
+      memoryNotes: ["Late night calls", "Bad connection, good vibes"],
       content: {
-        title: "Our Virtual Date Spot",
-        text: "Let's grab a coffee and talk about everything.",
-        image: "/photos/20251214_164045-IMG_STYLE.jpg",
+        title: "Digital Closeness",
+        text: "Every pixel of you is perfect.",
+        image: "/photos/Vc Memories/main.jpg",
       }
     },
-    {
-      id: "italy",
-      title: "Italy Dream",
-      icon: "Plane",
-      description: "Our future destination.",
-      color: "bg-blue-100",
-      accent: "blue",
-      group: "Dreams",
-      previewImages: [
-        "/photos/20251214_221838-IMG_STYLE.jpg",
-        "/photos/IMG-20251004-WA0022.jpg",
-        "/photos/IMG-20251008-WA0021.jpg"
-      ],
-      memoryNotes: ["Venice canals", "Pizza in Naples", "Holding hands in Rome"],
-      content: {
-        title: "Italy Awaits",
-        text: "One day we will walk these streets together.",
-        image: "/photos/20251214_221838-IMG_STYLE.jpg",
-      }
-    },
+    
+    // 2. AOT Corner
     {
       id: "aot",
       title: "AOT Corner",
@@ -86,17 +68,42 @@ export const siteData = {
       description: "Dedicate your heart.",
       color: "bg-green-900 text-white",
       accent: "green",
+      group: "Obsessions",
       previewImages: [
-        "/photos/20251214_221858-IMG_STYLE.jpg",
-        "/photos/IMG-20251027-WA0052.jpg"
+        "/photos/AOT/1.jpg",
+        "/photos/AOT/2.jpg"
       ],
       memoryNotes: ["Shinzo wo Sasageyo!", "Mikasa's scarf"],
       content: {
         title: "To You, 2000 Years From Now",
         text: "We will watch it 500 times. I'll get you the scarf.",
-        image: "/photos/20251214_221858-IMG_STYLE.jpg",
+        image: "/photos/AOT/main.jpg",
       }
     },
+
+    // 3. Times I Fell Hard For You (Replaces Italy Dream)
+    {
+      id: "fell-hard",
+      title: "Times I Fell Hard",
+      icon: "Heart", 
+      description: "Moments my heart skipped a beat.",
+      color: "bg-red-50",
+      accent: "red",
+      group: "Romance",
+      previewImages: [
+        "/photos/Times I fell for you/1.jpg",
+        "/photos/Times I fell for you/2.jpg",
+        "/photos/Times I fell for you/3.jpg"
+      ],
+      memoryNotes: ["That specific smile", "When you laughed", "Your kindness"],
+      content: {
+        title: "Falling For You",
+        text: "It wasn't just one moment. It was a million little things that made me realize you're the one.",
+        image: "/photos/Times I fell for you/main.jpg",
+      }
+    },
+
+    // 4. White Lilies
     {
       id: "lilies",
       title: "White Lilies",
@@ -104,17 +111,20 @@ export const siteData = {
       description: "Your favorite.",
       color: "bg-white border border-gray-200",
       accent: "pink",
+      group: "Little Things",
       previewImages: [
-        "/photos/20251214_221921-IMG_STYLE.jpg",
-        "/photos/IMG-20251105-WA0007(1).jpg"
+        "/photos/White Lillies/1.jpg",
+        "/photos/White Lillies/2.jpg"
       ],
       memoryNotes: ["Pure beauty", "Just for you"],
       content: {
         title: "For My Flower",
         text: "Pure and beautiful, just like you.",
-        image: "/photos/20251214_221921-IMG_STYLE.jpg",
+        image: "/photos/White Lillies/main.jpg",
       }
     },
+
+    // 5. Sugar Rush
     {
       id: "desserts",
       title: "Sugar Rush",
@@ -123,17 +133,19 @@ export const siteData = {
       color: "bg-pink-100",
       accent: "pink",
       previewImages: [
-        "/photos/20251214_222021-IMG_STYLE.jpg",
-        "/photos/IMG-20251105-WA0015.jpg"
+        "/photos/Sugar Rush/1.jpg",
+        "/photos/Sugar Rush/2.jpg"
       ],
       memoryNotes: ["Sweet cravings", "Chocolate runs"],
       content: {
         title: "Sweet Treats",
         text: "Dark chocolate, cheesecake, and everything sweet.",
-        image: "/photos/20251214_222021-IMG_STYLE.jpg",
+        image: "/photos/Sugar Rush/main.jpg",
       }
     },
-     {
+
+    // 6. Food Passport (Folder: Food Transport)
+    {
       id: "food",
       title: "Food Passport",
       icon: "Utensils",
@@ -141,17 +153,19 @@ export const siteData = {
       color: "bg-yellow-100",
       accent: "yellow",
       previewImages: [
-        "/photos/20251214_222112-IMG_STYLE.jpg",
-        "/photos/IMG-20251105-WA0018.jpg"
+        "/photos/Food Transport/1.jpg",
+        "/photos/Food Transport/2.jpg"
       ],
       memoryNotes: ["Spicy food challenge", "Street food cravings"],
       content: {
         title: "Our Menu",
         text: "From spicy curries to crispy tacos.",
-        image: "/photos/20251214_222112-IMG_STYLE.jpg",
+        image: "/photos/Food Transport/main.jpg",
       }
     },
-     {
+
+    // 7. Binge Watch
+    {
       id: "movies",
       title: "Binge Watch",
       icon: "Film",
@@ -159,16 +173,18 @@ export const siteData = {
       color: "bg-red-100",
       accent: "red",
       previewImages: [
-        "/photos/IMG-20250914-WA0192.jpg",
-        "/photos/IMG-20250914-WA0192 (2).jpg"
+        "/photos/Binge Watch/1.jpg",
+        "/photos/Binge Watch/2.jpg"
       ],
       memoryNotes: ["Movie marathons", "Popcorn time"],
       content: {
         title: "Movie Night",
         text: "Cozy blankets and endless movies.",
-        image: "/photos/IMG-20250914-WA0192.jpg",
+        image: "/photos/Binge Watch/main.jpg",
       }
     },
+
+    // 8. Art Gallery
     {
       id: "art",
       title: "Art Gallery",
@@ -177,53 +193,40 @@ export const siteData = {
       color: "bg-purple-100",
       accent: "purple",
       previewImages: [
-        "/photos/IMG-20251004-WA0018.jpg",
-        "/photos/IMG-20251104-WA0023.jpg"
+        "/photos/Art gallery/1.jpg",
+        "/photos/Art gallery/2.jpg"
       ],
       memoryNotes: ["Sketching session", "Your beautiful art"],
       content: {
         title: "Your Art",
         text: "Dancing, painting, sketching... you do it all.",
-        image: "/photos/IMG-20251004-WA0018.jpg",
+        image: "/photos/Art gallery/main.jpg",
       }
     },
+
+    // 9. Virtual Date (Moved to Second Last) + GMeet Link
     {
-      id: "sleep",
-      title: "Sleepyhead",
-      icon: "Moon",
-      description: "Shhh...",
-      color: "bg-indigo-900 text-white",
-      accent: "indigo",
+      id: "date-night",
+      title: "Virtual Date",
+      icon: "Coffee",
+      description: "Tap to join call...",
+      color: "bg-orange-100",
+      accent: "orange",
+      group: "Right Now",
+      meetLink: "https://meet.google.com/abc-defg-hij", // REPLACE THIS with your actual link
       previewImages: [
-        "/photos/IMG-20251027-WA0039.jpg",
-        "/photos/IMG-20251102-WA0033.jpg"
+        "/photos/Virtual Date/1.jpg", // Ensure this folder exists or rename from "date-night"
+        "/photos/Virtual Date/2.jpg"
       ],
-      memoryNotes: ["Sleeping beauty", "Quiet moments"],
+      memoryNotes: ["I'm waiting...", "Click the button!"],
       content: {
-        title: "Sweet Dreams",
-        text: "You look so cute when you sleep.",
-        image: "/photos/IMG-20251027-WA0039.jpg",
+        title: "It's Date Time",
+        text: "I'm waiting for you on the other side. Come say hi!",
+        image: "/photos/Virtual Date/main.jpg",
       }
     },
-    {
-      id: "vc",
-      title: "VC Memories",
-      icon: "Video",
-      description: "Screenshots of us.",
-      color: "bg-gray-100",
-      accent: "blue",
-      previewImages: [
-        "/photos/Screenshot_20251019-234213.png",
-        "/photos/Screenshot_20251019-234235.png",
-        "/photos/Screenshot_20250831-125140.jpg"
-      ],
-      memoryNotes: ["Late night calls", "Bad connection, good vibes"],
-      content: {
-        title: "Digital Closeness",
-        text: "Every pixel of you is perfect.",
-        image: "/photos/Screenshot_20251019-234213.png",
-      }
-    },
+
+    // 10. The Hug (Last)
     {
       id: "hug",
       title: "The Hug",
@@ -231,84 +234,32 @@ export const siteData = {
       description: "AI Generated Warmth.",
       color: "bg-teal-100",
       accent: "teal",
+      group: "Until Real",
       previewImages: [
-        "/photos/IMG-20251105-WA0032.jpg",
-        "/photos/IMG-20251105-WA0032 (2).jpg"
+        "/photos/The Hug/1.jpg",
+        "/photos/The Hug/2.jpg"
       ],
       memoryNotes: ["Warm embrace", "Until it's real"],
       content: {
         title: "A Virtual Hug",
         text: "Since we haven't met yet, I asked a computer to hug you for me. Best I can do until Italy.",
-        image: "/photos/IMG-20251105-WA0032.jpg", // Placeholder for AI hug
+        image: "/photos/The Hug/main.jpg",
       }
     }
   ],
 
-  gallery: [
-    { src: "/photos/20251214_164045-IMG_STYLE.jpg", alt: "Us" },
-    { src: "/photos/20251214_221838-IMG_STYLE.jpg", alt: "Us" },
-    { src: "/photos/20251214_221858-IMG_STYLE.jpg", alt: "Us" },
-    { src: "/photos/20251214_221921-IMG_STYLE.jpg", alt: "Us" },
-    { src: "/photos/20251214_222021-IMG_STYLE.jpg", alt: "Us" },
-    { src: "/photos/20251214_222112-IMG_STYLE.jpg", alt: "Us" },
-    { src: "/photos/2025_08_29_23_37_194e13a456-d1a3-4f9f-87ec-c794bbb3bd1d.jpg", alt: "Us" },
-    { src: "/photos/34c0e8465ee1a4cc2ddc35e482517294 (2).jpg", alt: "Us" },
-    { src: "/photos/34c0e8465ee1a4cc2ddc35e482517294.jpg", alt: "Us" },
-    { src: "/photos/54160f7c01a1ce1d137500652aa6ff17.jpg", alt: "Us" },
-    { src: "/photos/72d8bafecf122c754210ce474b0345f9.jpg", alt: "Us" },
-    { src: "/photos/94d9d04b7335ebf52b705e59a47550a5.jpg", alt: "Us" },
-    { src: "/photos/957b9fee3d0a62d2e80fb479c69be809.jpg", alt: "Us" },
-    { src: "/photos/IMG-20250913-WA0031(1).jpg", alt: "Us" },
-    { src: "/photos/IMG-20250914-WA0192 (2).jpg", alt: "Us" },
-    { src: "/photos/IMG-20250914-WA0192.jpg", alt: "Us" },
-    { src: "/photos/IMG-20250929-WA0016.jpg", alt: "Us" },
-    { src: "/photos/IMG-20251004-WA0011.jpg", alt: "Us" },
-    { src: "/photos/IMG-20251004-WA0012.jpg", alt: "Us" },
-    { src: "/photos/IMG-20251004-WA0013.jpg", alt: "Us" },
-    { src: "/photos/IMG-20251004-WA0017 (2).jpg", alt: "Us" },
-    { src: "/photos/IMG-20251004-WA0017.jpg", alt: "Us" },
-    { src: "/photos/IMG-20251004-WA0018.jpg", alt: "Us" },
-    { src: "/photos/IMG-20251004-WA0022.jpg", alt: "Us" },
-    { src: "/photos/IMG-20251008-WA0021.jpg", alt: "Us" },
-    { src: "/photos/IMG-20251027-WA0039.jpg", alt: "Us" },
-    { src: "/photos/IMG-20251027-WA0052.jpg", alt: "Us" },
-    { src: "/photos/IMG-20251027-WA0053.jpg", alt: "Us" },
-    { src: "/photos/IMG-20251102-WA0033.jpg", alt: "Us" },
-    { src: "/photos/IMG-20251104-WA0023.jpg", alt: "Us" },
-    { src: "/photos/IMG-20251105-WA0007(1).jpg", alt: "Us" },
-    { src: "/photos/IMG-20251105-WA0015.jpg", alt: "Us" },
-    { src: "/photos/IMG-20251105-WA0018.jpg", alt: "Us" },
-    { src: "/photos/IMG-20251105-WA0032 (2).jpg", alt: "Us" },
-    { src: "/photos/IMG-20251105-WA0032.jpg", alt: "Us" },
-    { src: "/photos/IMG-20260124-WA0023.jpg", alt: "Us" },
-    { src: "/photos/IMG_20251028_121924_645.jpg", alt: "Us" },
-    { src: "/photos/Screenshot_20250831-125140 (2).jpg", alt: "VC" },
-    { src: "/photos/Screenshot_20250831-125140.jpg", alt: "VC" },
-    { src: "/photos/Screenshot_20251019-234213.png", alt: "VC" },
-    { src: "/photos/Screenshot_20251019-234235.png", alt: "VC" },
-    { src: "/photos/Screenshot_20251019-234309.png", alt: "VC" },
-    { src: "/photos/Screenshot_20251025-142056.png", alt: "VC" },
-    { src: "/photos/Screenshot_20251106-205239.png", alt: "VC" },
-    { src: "/photos/Screenshot_20260131-020739.png", alt: "VC" },
-    { src: "/photos/Screenshot_20260131-020757.png", alt: "VC" },
-    { src: "/photos/Screenshot_20260131-020801.png", alt: "VC" },
-    { src: "/photos/Screenshot_20260131-020803.png", alt: "VC" },
-    { src: "/photos/Screenshot_20260131-020811.png", alt: "VC" },
-    { src: "/photos/Screenshot_20260131-020825.png", alt: "VC" },
-    { src: "/photos/Screenshot_20260131-020857.png", alt: "VC" },
-    { src: "/photos/Screenshot_20260131-020903.png", alt: "VC" },
-    { src: "/photos/Screenshot_20260131-020911.png", alt: "VC" },
-    { src: "/photos/Screenshot_20260131-020914.png", alt: "VC" },
-    { src: "/photos/Screenshot_20260131-020917.png", alt: "VC" },
-    { src: "/photos/ff5fa4fd41b11b36550da473f59a8bcd.jpg", alt: "Us" },
-  ],
+  // Keep existing Gallery logic (random placeholders) or update if needed
+  gallery: Array.from({ length: 30 }, (_, i) => ({
+      src: `/photos/gallery-${i + 1}.jpg`,
+      alt: "Us"
+  })),
   
   videos: {
     kissie: [
-        { src: "/videos/kissie/VID-20251104-WA0034.mp4", poster: "/photos/IMG-20251104-WA0023.jpg" },
+        { src: "/videos/kissie-1.mp4", poster: "/videos/posters/kissie-poster.jpg" },
     ],
     dance: [
-        // { src: "https://placehold.co/video", poster: "https://placehold.co/400x600/png?text=Poster+2" },
+        { src: "/videos/dance-1.mp4", poster: "/videos/posters/dance-poster.jpg" },
     ]
   },
 
@@ -342,6 +293,6 @@ export const siteData = {
   
   final: {
       text: "Love you, always, my forever.",
-      image: "/final/aot.jpg"
+      image: "/photos/final-moment.jpg"
   }
 };
