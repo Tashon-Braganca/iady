@@ -147,14 +147,13 @@ export default function CurvyPath({ items, renderItem, isMusicPlaying }: CurvyPa
             }}
         >
             {/* The train emoji centered on the path */}
-            {/* transform origin center to ensure it rotates correctly */}
+            {/* Removed rotate(90) which was causing it to be sideways */}
             <text 
                 x="0" 
                 y="0" 
-                fontSize="15" 
+                fontSize="40" 
                 textAnchor="middle" 
-                dominantBaseline="middle"
-                transform="rotate(90)" 
+                dominantBaseline="middle" 
                 style={{ filter: "drop-shadow(0px 2px 4px rgba(0,0,0,0.3))" }}
             >
                 🚂

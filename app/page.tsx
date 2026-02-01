@@ -5,6 +5,7 @@ import { useRouter } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
 import { Lock, Heart, Key } from "lucide-react";
 import { siteData } from "@/content/siteData";
+import { useMusic } from "@/lib/MusicContext"; // Import music context
 
 export default function LoginPage() {
   const [password, setPassword] = useState("");
@@ -12,6 +13,7 @@ export default function LoginPage() {
   const [message, setMessage] = useState("");
   const [loading, setLoading] = useState(false);
   const router = useRouter();
+  const { togglePlay } = useMusic(); // Get music toggle function
 
   const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -24,6 +26,8 @@ export default function LoginPage() {
     });
 
     if (res.ok) {
+      // Start music immediately on success interaction
+      togglePlay();
       router.push("/path");
     } else {
       setLoading(false);
