@@ -11,33 +11,32 @@ export default function AuthCheck({ children }: { children: React.ReactNode }) {
   const [isChecked, setIsChecked] = useState(false);
 
   useEffect(() => {
-    // 1. If we are on the login page, allow immediately
     if (pathname === "/") {
-      setIsChecked(true);
-      return;
+        // Already allowed by render logic below, but good for state consistency
+        setIsChecked(true);
+        return;
     }
 
-    // 2. Check for the session flag
     const hasAccess = sessionStorage.getItem("is_authenticated");
-
     if (!hasAccess) {
-      // If no access, kick back to login
       router.replace("/");
     } else {
       setIsChecked(true);
     }
   }, [pathname, router]);
 
-  // LOGIN PAGE (Root): No Background, No Stickers, Just Clean Page
-  if (pathname === "/") {
+  // 1. LOGIN PAGE (Root) - ALWAYS RENDER IMMEDIATELY
+  // checking !pathname is a safety for initial hydration
+  if (!pathname || pathname === "/") {
     return <>{children}</>;
   }
 
-  // PROTECTED PAGES: Wait for check, then show full UI
+  // 2. LOADING STATE (Protected Pages)
   if (!isChecked) {
-    return null; 
+    return null; // or a spinner
   }
 
+  // 3. PROTECTED CONTENT (With Backgrounds)
   return (
     <>
         <BackgroundLayer />
