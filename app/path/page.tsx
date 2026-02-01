@@ -99,15 +99,15 @@ export default function PathPage() {
                     whileTap={!locked ? { scale: 0.95 } : {}}
                     onClick={() => handleLevelClick(level, index)}
                     className={`
-                        relative w-24 h-24 rounded-full flex items-center justify-center shadow-[0_8px_30px_rgb(0,0,0,0.2)] transition-all duration-300 border-[4px]
+                        relative w-24 h-24 rounded-full flex items-center justify-center shadow-[0_8px_30px_rgb(0,0,0,0.25)] transition-all duration-300 border-[4px]
                         ${locked 
-                            ? "bg-gray-100 border-gray-200 text-gray-300 cursor-not-allowed" 
-                            : `${level.color} border-white text-white hover:scale-110 hover:shadow-[0_0_20px_rgba(255,255,255,0.6)]`
+                            ? "bg-gray-200 border-gray-300 text-gray-500 cursor-not-allowed" 
+                            : `${level.color} border-white text-white hover:scale-110 hover:shadow-[0_0_30px_rgba(255,255,255,0.8)]`
                         }
                         ${completed ? "ring-4 ring-green-400 ring-offset-4" : ""}
                     `}
                 >
-                    {locked ? <Lock size={28} /> : <Icon size={36} strokeWidth={2.5} className="drop-shadow-md" />}
+                    {locked ? <Lock size={32} strokeWidth={2.5} /> : <Icon size={40} strokeWidth={2.5} className="drop-shadow-[0_2px_4px_rgba(0,0,0,0.3)]" />}
                     
                     {/* Completion Badge */}
                     {completed && (
@@ -122,19 +122,19 @@ export default function PathPage() {
                 </motion.button>
              </div>
 
-             {/* Label Tooltip (Floating to the side) */}
+             {/* Label Tooltip (Floating to the side) - Mobile Optimized */}
              <motion.div 
                 initial={{ opacity: 0, x: isLeft ? -10 : 10 }}
                 whileInView={{ opacity: 1, x: 0 }}
                 transition={{ duration: 0.5, delay: 0.1 }}
                 className={`
-                    bg-white/80 backdrop-blur-sm px-4 py-2.5 rounded-xl text-center shadow-sm border border-white/50
-                    ${locked ? "opacity-40 grayscale blur-[1px]" : ""}
+                    bg-white px-4 py-2.5 rounded-xl text-center shadow-lg border-2
+                    ${locked ? "border-gray-400 bg-gray-50" : "border-indigo-200"}
                 `}
              >
-                <h3 className="font-bold text-sm text-gray-700 leading-tight" style={{ fontFamily: 'var(--font-comic)' }}>{level.title}</h3>
-                <div className="text-[10px] text-gray-400 font-medium uppercase tracking-wider mt-0.5 flex justify-center items-center gap-1">
-                    {index + 1} <span className="w-1 h-1 rounded-full bg-gray-300" /> {level.group || "Memory"}
+                <h3 className="font-bold text-base text-gray-900 leading-tight drop-shadow-sm" style={{ fontFamily: 'var(--font-comic)' }}>{level.title}</h3>
+                <div className="text-[11px] text-gray-600 font-bold uppercase tracking-wider mt-1 flex justify-center items-center gap-1">
+                    {index + 1} <span className="w-1.5 h-1.5 rounded-full bg-gray-400" /> {level.group || "Memory"}
                 </div>
              </motion.div>
         </div>
