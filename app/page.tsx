@@ -69,7 +69,15 @@ export default function LoginPage() {
   };
 
   return (
-    <div className="min-h-screen flex flex-col items-center justify-center bg-pink-50 relative overflow-hidden">
+    <>
+      {/* Hide global background/stickers on login page */}
+      <style jsx global>{`
+        body > div[class*="fixed"] {
+          display: none !important;
+        }
+      `}</style>
+      
+      <div className="min-h-screen flex flex-col items-center justify-center bg-pink-50 relative overflow-hidden">
         {/* Background Decorative Elements - Minimal Emojis */}
         <div className="absolute top-0 left-0 w-full h-full pointer-events-none overflow-hidden">
              <motion.div 
@@ -150,5 +158,6 @@ export default function LoginPage() {
         </form>
       </motion.div>
     </div>
+    </>
   );
 }

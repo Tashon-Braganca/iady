@@ -1,7 +1,8 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono, Patrick_Hand } from "next/font/google";
 import "./globals.css";
-import AuthCheck from "@/components/AuthCheck";
+import BackgroundLayer from "@/components/BackgroundLayer";
+import StickerLayer from "@/components/StickerLayer";
 import { MusicProvider } from "@/lib/MusicContext";
 
 const geistSans = Geist({
@@ -36,9 +37,9 @@ export default function RootLayout({
         className={`${geistSans.variable} ${geistMono.variable} ${patrickHand.variable} antialiased bg-[#FDFBF7]`}
       >
         <MusicProvider>
-          <AuthCheck>
-            {children}
-          </AuthCheck>
+          <BackgroundLayer />
+          <StickerLayer />
+          {children}
         </MusicProvider>
       </body>
     </html>
