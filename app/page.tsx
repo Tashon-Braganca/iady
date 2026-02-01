@@ -65,15 +65,7 @@ export default function LoginPage() {
   };
 
   return (
-    <>
-      {/* Hide global background/stickers on login page */}
-      <style jsx global>{`
-        body > div[class*="fixed"] {
-          display: none !important;
-        }
-      `}</style>
-      
-      <div className="min-h-screen flex flex-col items-center justify-center bg-pink-50 relative overflow-hidden">
+    <div className="min-h-screen flex flex-col items-center justify-center bg-pink-50 relative overflow-hidden">
         {/* Background Decorative Elements - Minimal Emojis */}
         <div className="absolute top-0 left-0 w-full h-full pointer-events-none overflow-hidden">
              <motion.div 
@@ -148,12 +140,17 @@ export default function LoginPage() {
             disabled={loading}
             className="w-full bg-primary hover:bg-sky-400 text-white font-bold py-3 rounded-xl transition-colors shadow-lg shadow-blue-200"
             type="submit"
+            onClick={() => {
+              // Start music IMMEDIATELY on click to preserve user gesture
+              if (!isPlaying) {
+                togglePlay();
+              }
+            }}
           >
             {loading ? "Unlocking..." : "Open My Heart"}
           </motion.button>
         </form>
       </motion.div>
     </div>
-    </>
   );
 }
