@@ -13,11 +13,23 @@ export default function LoginPage() {
   const [message, setMessage] = useState("");
   const [loading, setLoading] = useState(false);
   const router = useRouter();
-  const { togglePlay } = useMusic(); // Get music toggle function
+  const { togglePlay, isPlaying } = useMusic(); // Get music toggle function and state
+
+  // Clear session on mount to force re-login if they visit the root URL
+  useState(() => {
+     if (typeof window !== "undefined") {
+         sessionStorage.removeItem("is_authenticated");
+     }
+  });
 
   const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault();
     setLoading(true);
+
+    // FIX: Start music IMMEDIATELY on user interaction to bypass browser block
+    if (!isPlaying) {
+        togglePlay(); 
+    }
 
     const res = await fetch("/api/unlock", {
       method: "POST",
@@ -26,10 +38,17 @@ export default function LoginPage() {
     });
 
     if (res.ok) {
-      // Start music immediately on success interaction
-      togglePlay();
+      // Set session flag
+      sessionStorage.setItem("is_authenticated", "true");
       router.push("/path");
     } else {
+      setLoading(false);
+      // If login failed, stop the music we just started
+      if (isPlaying) { 
+          togglePlay(); 
+      }
+      
+      setErrorCount((prev) => prev + 1);
       setLoading(false);
       setErrorCount((prev) => prev + 1);
       

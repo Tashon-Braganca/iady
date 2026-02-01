@@ -3,6 +3,7 @@ import { Geist, Geist_Mono, Patrick_Hand } from "next/font/google";
 import "./globals.css";
 import BackgroundLayer from "@/components/BackgroundLayer";
 import StickerLayer from "@/components/StickerLayer";
+import AuthCheck from "@/components/AuthCheck";
 import { MusicProvider } from "@/lib/MusicContext";
 
 const geistSans = Geist({
@@ -39,7 +40,9 @@ export default function RootLayout({
         <MusicProvider>
           <BackgroundLayer />
           <StickerLayer />
-          {children}
+          <AuthCheck>
+            {children}
+          </AuthCheck>
         </MusicProvider>
       </body>
     </html>
