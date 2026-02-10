@@ -27,20 +27,22 @@ export default function LettersPage() {
         {siteData.letters.map((letter, index) => (
           <motion.button
             key={letter.id}
-            initial={{ opacity: 0, y: 50 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: index * 0.2 }}
+            initial={{ opacity: 0, y: 50, rotate: index % 2 === 0 ? -1 : 1 }}
+            animate={{ opacity: 1, y: 0, rotate: index % 2 === 0 ? -1 : 1 }}
+            whileHover={{ scale: 1.02, rotate: 0 }}
+            whileTap={{ scale: 0.96 }}
+            transition={{ type: "spring", stiffness: 400, damping: 17 }}
             onClick={() => setSelectedLetter(letter)}
-            className="group relative bg-white p-1 rounded-lg shadow-xl hover:rotate-2 transition-transform duration-300"
+            className="group relative w-full perspective-1000"
           >
-            {/* Envelope Look */}
-            <div className="bg-[#f8f8f8] border-2 border-pink-100 p-8 rounded-md flex flex-col items-center justify-center min-h-[160px] relative overflow-hidden">
-                <div className="absolute top-0 left-0 w-full h-2 bg-[repeating-linear-gradient(45deg,#ffb7b2,#ffb7b2_10px,transparent_10px,transparent_20px)] opacity-50"></div>
-                <div className="absolute bottom-0 left-0 w-full h-2 bg-[repeating-linear-gradient(45deg,#87ceeb,#87ceeb_10px,transparent_10px,transparent_20px)] opacity-50"></div>
+            {/* Envelope Look - Refined */}
+            <div className="bg-white border border-pink-100 p-8 rounded-2xl shadow-[0_10px_40px_-10px_rgba(255,183,178,0.3)] flex flex-col items-center justify-center min-h-[160px] relative overflow-hidden transition-all duration-300 group-hover:shadow-[0_20px_50px_-10px_rgba(255,183,178,0.5)]">
+                {/* Washi Tape Decor */}
+                <div className="absolute top-0 left-1/2 -translate-x-1/2 w-32 h-4 bg-pink-100/50 rotate-1 transform" />
                 
-                <Heart className="text-pink-300 mb-3 group-hover:scale-125 transition-transform" fill="currentColor" size={40} />
-                <h3 className="font-serif text-xl font-medium text-gray-700">{letter.title}</h3>
-                <span className="text-xs text-gray-400 mt-2 uppercase tracking-widest">Tap to open</span>
+                <Heart className="text-pink-300 mb-4 group-hover:text-pink-400 group-hover:scale-110 transition-all duration-300" fill="currentColor" size={42} />
+                <h3 className="font-serif text-2xl font-medium text-gray-700">{letter.title}</h3>
+                <span className="text-xs text-pink-300 mt-3 uppercase tracking-widest font-bold">Open Me</span>
             </div>
           </motion.button>
         ))}

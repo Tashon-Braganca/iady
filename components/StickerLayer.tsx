@@ -23,10 +23,30 @@ export default function StickerLayer() {
 
     // 2. Determine source items
     const hasCustomStickers = assetsManifest.stickers.length > 0;
-    const count = 12; // Number of stickers to place
+    const count = 16; // Number of stickers to place
+
+    // Define zones (corners and edges only) to avoid center clustering
+    const zones = [
+      // Top-left corner
+      { xMin: 0, xMax: 15, yMin: 0, yMax: 20 },
+      // Top-right corner
+      { xMin: 85, xMax: 100, yMin: 0, yMax: 20 },
+      // Bottom-left corner
+      { xMin: 0, xMax: 15, yMin: 80, yMax: 100 },
+      // Bottom-right corner
+      { xMin: 85, xMax: 100, yMin: 80, yMax: 100 },
+      // Left edge
+      { xMin: 0, xMax: 10, yMin: 25, yMax: 75 },
+      // Right edge
+      { xMin: 90, xMax: 100, yMin: 25, yMax: 75 },
+      // Top edge
+      { xMin: 20, xMax: 80, yMin: 0, yMax: 10 },
+      // Bottom edge
+      { xMin: 20, xMax: 80, yMin: 90, yMax: 100 },
+    ];
 
     const generated = Array.from({ length: count }).map((_, i) => {
-       const isCustom = hasCustomStickers && rng() > 0.3; // 70% chance of custom if available
+       const isCustom = hasCustomStickers && rng() > 0.2; // 80% chance of custom if available
        let content: any = null;
        
        if (isCustom) {
@@ -38,25 +58,18 @@ export default function StickerLayer() {
            content = { type: 'icon', Icon: FALLBACK_STICKERS[index], color: COLORS[colorIndex] };
        }
 
-       // Position logic: prefer edges to avoid blocking the path in center (approx 30% to 70% width)
-       // We can just use full range but maybe push them away from center X if we want to be fancy.
-       // Let's just keep it simple random for now as per prompt "corners/edges" implies logic.
-       
-       let x = rng() * 100;
-       // If x is between 25 and 75, shift it out
-       if (x > 25 && x < 75) {
-           x = rng() > 0.5 ? x + 50 : x - 50; // Push to sides
-           if (x < 0) x += 100;
-           if (x > 100) x -= 100;
-       }
+       // Pick a random zone
+       const zone = zones[Math.floor(rng() * zones.length)];
+       const x = zone.xMin + rng() * (zone.xMax - zone.xMin);
+       const y = zone.yMin + rng() * (zone.yMax - zone.yMin);
 
        return {
            id: i,
            content,
            x, 
-           y: rng() * 100, // 0-100% vertical
-           rotate: (rng() * 60) - 30, // -30 to 30 deg
-           scale: (rng() * 0.5) + 0.7, // 0.7 to 1.2
+           y,
+           rotate: (rng() * 40) - 20, // -20 to 20 deg
+           scale: (rng() * 0.4) + 0.6, // 0.6 to 1.0
        };
     });
 
@@ -74,15 +87,14 @@ export default function StickerLayer() {
                 top: `${s.y}%`,
             }}
             initial={{ opacity: 0, scale: 0 }}
-            animate={{ opacity: 1, scale: s.scale, rotate: s.rotate }}
-            transition={{ duration: 1, delay: s.id * 0.1 }}
-            whileHover={{ scale: s.scale * 1.2, rotate: 0 }}
+            animate={{ opacity: 0.6, scale: s.scale, rotate: s.rotate }}
+            transition={{ duration: 0.8, delay: s.id * 0.08 }}
         >
             {s.content.type === 'image' ? (
-                <img src={s.content.src} alt="sticker" className="w-24 h-24 object-contain drop-shadow-lg" />
+                <img src={s.content.src} alt="sticker" className="w-16 h-16 md:w-20 md:h-20 object-contain drop-shadow-md" />
             ) : (
-                <div className={`${s.content.color} drop-shadow-md`}>
-                    <s.content.Icon size={56} strokeWidth={2} />
+                <div className={`${s.content.color} drop-shadow-sm opacity-40`}>
+                    <s.content.Icon size={40} strokeWidth={2} />
                 </div>
             )}
         </motion.div>

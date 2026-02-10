@@ -19,21 +19,38 @@ export const siteData = {
       title: "The Cold DM", 
       icon: "Instagram", 
       description: "Where it all started...",
-      image: "/photos/The Cold DM/main.png" 
+      image: "/photos/The Cold DM/main.png",
+      images: [
+        "/photos/The Cold DM/1.jpg",
+        "/photos/The Cold DM/2.png",
+        "/photos/The Cold DM/3.png",
+        "/photos/The Cold DM/4.png",
+        "/photos/The Cold DM/main.png"
+      ]
     },
     { 
       date: "Sept 28", 
       title: "Officially Us", 
       icon: "Heart", 
       description: "The start of forever.",
-      image: "/photos/Officialy Us/main.png"
+      image: "/photos/Officialy Us/main.png",
+      images: [
+        "/photos/Officialy Us/3.jpg",
+        "/photos/Officialy Us/4.jpg",
+        "/photos/Officialy Us/main.png"
+      ]
     },
     { 
       date: "Oct 1", 
       title: "First 'I Love You'", 
       icon: "Lock", 
       description: "Locked in.",
-      image: "/photos/First I Love You/main.png"
+      image: "/photos/First I Love You/main.png",
+      images: [
+        "/photos/First I Love You/1.png",
+        "/photos/First I Love You/2.png",
+        "/photos/First I Love You/main.png"
+      ]
     },
   ],
 
@@ -53,7 +70,17 @@ export const siteData = {
         "/photos/Vc Memories/3.jpeg",
         "/photos/Vc Memories/4.png",
         "/photos/Vc Memories/5.png",
-        "/photos/Vc Memories/6.png"
+        "/photos/Vc Memories/6.png",
+        "/photos/Vc Memories/7.png",
+        "/photos/Vc Memories/8.png",
+        "/photos/Vc Memories/9.png",
+        "/photos/Vc Memories/10.png",
+        "/photos/Vc Memories/11.png",
+        "/photos/Vc Memories/12.png",
+        "/photos/Vc Memories/13.png",
+        "/photos/Vc Memories/14.png",
+        "/photos/Vc Memories/15.jpg",
+        "/photos/Vc Memories/main.jpg"
       ],
       memoryNotes: ["Late night calls", "Bad connection, good vibes"],
       content: {
@@ -76,7 +103,10 @@ export const siteData = {
         "/photos/AOT/1.jpg",
         "/photos/AOT/2.jpg",
         "/photos/AOT/3.jpg",
-        "/photos/AOT/4.jpg"
+        "/photos/AOT/4.jpg",
+        "/photos/AOT/5.jpg",
+        "/photos/AOT/6.jpg",
+        "/photos/AOT/main.jpg"
       ],
       memoryNotes: ["Shinzo wo Sasageyo!", "Mikasa's scarf"],
       content: {
@@ -101,7 +131,12 @@ export const siteData = {
         "/photos/Times I fell for you/3.jpg",
         "/photos/Times I fell for you/4.jpg",
         "/photos/Times I fell for you/5.jpg",
-        "/photos/Times I fell for you/6.jpg"
+        "/photos/Times I fell for you/6.jpg",
+        "/photos/Times I fell for you/7.jpg",
+        "/photos/Times I fell for you/8.jpg",
+        "/photos/Times I fell for you/9.png",
+        "/photos/Times I fell for you/10.jpg",
+        "/photos/Times I fell for you/main.jpg"
       ],
       memoryNotes: ["That specific smile", "When you laughed", "Your kindness"],
       content: {
@@ -125,7 +160,11 @@ export const siteData = {
         "/photos/White Lillies/2.jpg",
         "/photos/White Lillies/3.jpg",
         "/photos/White Lillies/4.jpg",
-        "/photos/White Lillies/5.jpg"
+        "/photos/White Lillies/5.jpg",
+        "/photos/White Lillies/6.jpg",
+        "/photos/White Lillies/7.jpg",
+        "/photos/White Lillies/8.jpg",
+        "/photos/White Lillies/main.jpg"
       ],
       memoryNotes: ["Pure beauty", "Just for you"],
       content: {
@@ -146,7 +185,11 @@ export const siteData = {
       previewImages: [
         "/photos/Sugar Rush/1.jpeg",
         "/photos/Sugar Rush/2.jpg",
-        "/photos/Sugar Rush/3.jpeg"
+        "/photos/Sugar Rush/3.jpeg",
+        "/photos/Sugar Rush/4.jpg",
+        "/photos/Sugar Rush/5.jpg",
+        "/photos/Sugar Rush/6.jpg",
+        "/photos/Sugar Rush/main.jpg"
       ],
       memoryNotes: ["Sweet cravings", "Chocolate runs"],
       content: {
@@ -168,7 +211,11 @@ export const siteData = {
         "/photos/Food Transport/1.jpg",
         "/photos/Food Transport/2.png",
         "/photos/Food Transport/3.png",
-        "/photos/Food Transport/4.png"
+        "/photos/Food Transport/4.png",
+        "/photos/Food Transport/5.jpg",
+        "/photos/Food Transport/6.png",
+        "/photos/Food Transport/7.png",
+        "/photos/Food Transport/main.jpg"
       ],
       memoryNotes: ["Spicy food challenge", "Street food cravings"],
       content: {
@@ -190,7 +237,11 @@ export const siteData = {
         "/photos/Binge Watch/1.png",
         "/photos/Binge Watch/2.png",
         "/photos/Binge Watch/3.png",
-        "/photos/Binge Watch/4.png"
+        "/photos/Binge Watch/4.png",
+        "/photos/Binge Watch/5.png",
+        "/photos/Binge Watch/6.png",
+        "/photos/Binge Watch/7.png",
+        "/photos/Binge Watch/main.png"
       ],
       memoryNotes: ["Movie marathons", "Popcorn time"],
       content: {
@@ -213,7 +264,14 @@ export const siteData = {
         "/photos/Art gallery/2.png",
         "/photos/Art gallery/3.jpeg",
         "/photos/Art gallery/4.jpeg",
-        "/photos/Art gallery/5.jpg"
+        "/photos/Art gallery/5.jpg",
+        "/photos/Art gallery/6.jpg",
+        "/photos/Art gallery/7.jpg",
+        "/photos/Art gallery/8.jpg",
+        "/photos/Art gallery/9.webp",
+        "/photos/Art gallery/10.jpg",
+        "/photos/Art gallery/11.png",
+        "/photos/Art gallery/main.jpg"
       ],
       memoryNotes: ["Sketching session", "Your beautiful art"],
       content: {
@@ -235,6 +293,9 @@ export const siteData = {
       meetLink: "https://meet.google.com/qbx-rkcv-wxd",
       previewImages: [
         "/photos/The Cold DM/1.jpg",
+        "/photos/The Cold DM/2.png",
+        "/photos/The Cold DM/3.png",
+        "/photos/The Cold DM/4.png",
         "/photos/The Cold DM/main.png"
       ],
       memoryNotes: ["February 14-15, 2026", "I'm waiting for you!", "Our Valentine's Date"],
@@ -258,12 +319,15 @@ export const siteData = {
         "/photos/The Hug/1.png",
         "/photos/The Hug/2.png",
         "/photos/The Hug/3.png",
-        "/photos/The Hug/4.png"
+        "/photos/The Hug/4.png",
+        "/photos/The Hug/5.png",
+        "/photos/The Hug/6.png",
+        "/photos/The Hug/main.png"
       ],
       memoryNotes: ["Warm embrace", "Until it's real"],
       content: {
         title: "A Virtual Hug",
-        text: "Since we haven't met yet, I asked a computer to hug you for me. Best I can do until Italy.",
+        text: "Since we haven't met yet, I asked a computer to hug you for me. Best I can do until we meet in June.",
         image: "/photos/The Hug/main.png",
       }
     }
@@ -284,6 +348,8 @@ export const siteData = {
   
   videos: {
     kissie: [
+        { src: "/videos/kissie/VID-20250918-WA0030.mp4" },
+        { src: "/videos/kissie/VID-20250921-WA0039.mp4" },
         { src: "/videos/kissie/VID-20250925-WA0039.mp4" },
         { src: "/videos/kissie/VID-20251010-WA0041.mp4" },
         { src: "/videos/kissie/VID-20251018-WA0031.mp4" },
@@ -294,9 +360,13 @@ export const siteData = {
     dance: [
         { src: "/videos/dance/VID-20251213-WA0058.mp4" },
         { src: "/videos/dance/PXL_20260105_062453252.mp4" },
+        { src: "/videos/dance/PXL_20260204_130647146.mp4" },
         { src: "/videos/dance/WhatsApp Video 2026-02-01 at 9.20.29 PM.mp4" },
         { src: "/videos/dance/WhatsApp Video 2026-02-01 at 9.20.41 PM.mp4" },
         { src: "/videos/dance/WhatsApp Video 2026-02-01 at 9.20.48 PM.mp4" },
+    ],
+    finale: [
+        { src: "/videos/the finale/PXL_20260201_162839765.mp4" },
     ]
   },
 
@@ -323,9 +393,9 @@ export const siteData = {
     "Watch AOT together (500 times)",
     "Give you the Mikasa Scarf",
     "Binge JJK & make you fall in love",
-    "ITALY (The Big Dream)",
     "A House with 2 floors (Dogs on ground, Us on top)",
-    "Buy you a Polaroid for your birthday"
+    "Countryside house with two kids running and 3 dogs one that follows you everywhere",
+    "Meet in June (the most important)"
   ],
   
   final: {

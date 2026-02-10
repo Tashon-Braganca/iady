@@ -71,14 +71,14 @@ export default function LoginPage() {
              <motion.div 
                 animate={{ y: [0, -20, 0], rotate: [0, 10, 0] }}
                 transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
-                className="absolute top-20 left-20 text-4xl"
+                className="absolute top-20 left-10 md:left-20 text-4xl"
             >
                 💌
             </motion.div>
              <motion.div 
                 animate={{ y: [0, 20, 0], rotate: [0, -10, 0] }}
                 transition={{ duration: 7, repeat: Infinity, ease: "easeInOut" }}
-                className="absolute bottom-32 right-20 text-4xl"
+                className="absolute bottom-32 right-10 md:right-20 text-4xl"
             >
                 🧸
             </motion.div>
@@ -92,31 +92,36 @@ export default function LoginPage() {
         </div>
 
       <motion.div
-        initial={{ opacity: 0, scale: 0.9 }}
-        animate={{ opacity: 1, scale: 1 }}
-        transition={{ duration: 0.5 }}
-        className="bg-white/90 backdrop-blur-xl p-8 rounded-3xl shadow-xl w-full max-w-md mx-4 z-10 border border-pink-100"
+        initial={{ opacity: 0, scale: 0.9, y: 20 }}
+        animate={{ opacity: 1, scale: 1, y: 0 }}
+        transition={{ duration: 0.6, type: "spring" }}
+        className="bg-white/80 backdrop-blur-2xl p-8 rounded-[2rem] shadow-2xl w-full max-w-md mx-4 z-10 border border-white/60 ring-1 ring-white/50"
       >
         <div className="text-center mb-8">
-          <div className="bg-pink-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4 text-pink-500">
-            <Heart size={32} fill="currentColor" />
-          </div>
-          <h1 className="text-2xl font-serif font-bold text-gray-800 mb-2">Welcome Home, Adyasha</h1>
-          <p className="text-gray-500 text-sm italic">{siteData.general.passwordHint}</p>
+          <motion.div 
+            animate={{ scale: [1, 1.1, 1] }}
+            transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
+            className="bg-gradient-to-tr from-pink-100 to-white w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-4 text-pink-500 shadow-inner"
+          >
+            <Heart size={36} fill="currentColor" className="drop-shadow-sm" />
+          </motion.div>
+          <h1 className="text-3xl font-serif font-bold text-gray-800 mb-2 tracking-tight">Welcome Home, Adyasha</h1>
+          <p className="text-gray-500 text-base italic">{siteData.general.passwordHint}</p>
         </div>
 
-        <form onSubmit={handleLogin} className="space-y-4">
-          <div className="relative">
+        <form onSubmit={handleLogin} className="space-y-5">
+          <div className="relative group">
             <input
               type="password"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
               placeholder="Enter the magic words..."
-              className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none transition-all bg-white/50"
+              className="w-full px-5 py-4 rounded-2xl border-2 border-gray-100 focus:border-pink-300 focus:ring-4 focus:ring-pink-100 outline-none transition-all bg-white/60 text-lg placeholder:text-gray-400 text-gray-700"
+              style={{ fontSize: '16px' }} // Prevents iOS zoom
               autoFocus
             />
-            <div className="absolute right-3 top-3 text-gray-400">
-                <Key size={20} />
+            <div className="absolute right-4 top-4 text-gray-300 group-focus-within:text-pink-400 transition-colors">
+                <Key size={24} />
             </div>
           </div>
 
@@ -135,10 +140,10 @@ export default function LoginPage() {
           </AnimatePresence>
 
           <motion.button
-            whileHover={{ scale: 1.02 }}
+            whileHover={{ scale: 1.02, boxShadow: "0 10px 25px -5px rgba(59, 130, 246, 0.4)" }}
             whileTap={{ scale: 0.98 }}
             disabled={loading}
-            className="w-full bg-primary hover:bg-sky-400 text-white font-bold py-3 rounded-xl transition-colors shadow-lg shadow-blue-200"
+            className="w-full bg-gradient-to-r from-sky-400 to-blue-500 hover:from-sky-500 hover:to-blue-600 text-white font-bold py-4 rounded-2xl transition-all shadow-lg shadow-blue-200 text-lg tracking-wide"
             type="submit"
             onClick={() => {
               // Start music IMMEDIATELY on click to preserve user gesture

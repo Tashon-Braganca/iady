@@ -122,20 +122,18 @@ export default function PathPage() {
                 </motion.button>
              </div>
 
-             {/* Label Tooltip - EXTREME VISIBILITY FOR MOBILE */}
+             {/* Label Tooltip - Optimized for Mobile Readability */}
              <motion.div 
-                initial={{ opacity: 0, x: isLeft ? -10 : 10 }}
-                whileInView={{ opacity: 1, x: 0 }}
+                initial={{ opacity: 0, y: 10 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ margin: "-50px" }} // Triggers earlier on mobile
                 transition={{ duration: 0.5, delay: 0.1 }}
-                className="bg-white px-5 py-3 rounded-2xl text-center shadow-2xl border-4 border-indigo-400"
-                style={{
-                    backgroundColor: '#ffffff',
-                    opacity: 1,
-                }}
+                className="bg-white/95 backdrop-blur-sm px-5 py-3 rounded-2xl text-center shadow-[0_8px_30px_rgb(0,0,0,0.12)] border border-white/50 relative z-10 max-w-[140px]"
              >
-                <h3 className="font-black text-lg text-black leading-tight" style={{ fontFamily: 'var(--font-comic)', WebkitTextStroke: '0.5px black' }}>{level.title}</h3>
-                <div className="text-xs text-black font-black uppercase tracking-wider mt-1.5 flex justify-center items-center gap-2">
-                    {index + 1} <span className="w-2 h-2 rounded-full bg-black" /> {level.group || "Memory"}
+                <h3 className="font-bold text-base text-gray-800 leading-tight" style={{ fontFamily: 'var(--font-comic)' }}>{level.title}</h3>
+                <div className="text-[10px] text-gray-400 font-bold uppercase tracking-wider mt-1 flex justify-center items-center gap-1.5">
+                    <span className={`w-1.5 h-1.5 rounded-full ${completed ? 'bg-green-400' : 'bg-gray-300'}`} /> 
+                    {level.group || "Memory"}
                 </div>
              </motion.div>
         </div>
@@ -166,26 +164,26 @@ export default function PathPage() {
            </div>
        </div>
 
-      <header className="pt-24 pb-12 px-6 text-center relative z-10">
+       <header className="pt-24 pb-12 px-6 text-center relative z-10">
         <motion.div
             initial={{ scale: 0.8, opacity: 0 }}
             animate={{ scale: 1, opacity: 1 }}
             transition={{ type: "spring" }}
             className="inline-block mb-4 relative"
         >
-             <div className="text-6xl filter drop-shadow-sm">💌</div>
+             <div className="text-6xl filter drop-shadow-md">💌</div>
              <motion.div 
                 animate={{ rotate: [0, 10, -10, 0] }}
                 transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
                 className="absolute -top-2 -right-2 text-2xl"
-             >
-                 ✨
-             </motion.div>
+            >
+                ✨
+            </motion.div>
         </motion.div>
         <motion.h1 
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            className="text-5xl font-bold text-gray-800 mb-3 drop-shadow-sm tracking-tight"
+            className="text-4xl md:text-5xl font-bold text-gray-800 mb-3 drop-shadow-sm tracking-tight leading-tight"
             style={{ fontFamily: "var(--font-comic)" }}
         >
             {siteData.hero.title}
@@ -194,7 +192,7 @@ export default function PathPage() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.2 }}
-            className="text-indigo-400 font-bold text-lg tracking-wide uppercase text-xs"
+            className="text-indigo-400 font-bold text-sm tracking-widest uppercase"
         >
             {siteData.hero.subtitle}
         </motion.p>
