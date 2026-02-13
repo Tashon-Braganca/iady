@@ -4,11 +4,11 @@ import { Volume2, VolumeX, Music, Disc } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import { useMusic } from "@/lib/MusicContext";
 
-export default function MusicPlayer() {
+export default function MusicPlayer({ reducedZ = false }: { reducedZ?: boolean }) {
   const { isPlaying, togglePlay, isMuted, toggleMute } = useMusic();
 
   return (
-    <div className="fixed bottom-6 right-6 z-[100]">
+    <div className={`fixed bottom-6 right-6 ${reducedZ ? 'z-[50]' : 'z-[100]'}`}>
       <motion.button
         onClick={togglePlay}
         className={`

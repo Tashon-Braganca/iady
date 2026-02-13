@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { siteData } from "@/content/siteData";
 import { Instagram, Heart, Lock, Calendar, X, ChevronLeft, ChevronRight } from "lucide-react";
@@ -12,22 +12,44 @@ const iconMap: any = {
 export default function Timeline() {
   const [selectedItem, setSelectedItem] = useState<any>(null);
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
+  const touchStartX = useRef(0);
+  const touchEndX = useRef(0);
 
   const handleOpen = (item: any) => {
     setSelectedItem(item);
     setCurrentImageIndex(0);
   };
 
-  const nextImage = (e: React.MouseEvent) => {
-    e.stopPropagation();
+  const nextImage = (e?: React.MouseEvent) => {
+    e?.stopPropagation();
     if (!selectedItem?.images) return;
     setCurrentImageIndex((prev) => (prev + 1) % selectedItem.images.length);
   };
 
-  const prevImage = (e: React.MouseEvent) => {
-    e.stopPropagation();
+  const prevImage = (e?: React.MouseEvent) => {
+    e?.stopPropagation();
     if (!selectedItem?.images) return;
     setCurrentImageIndex((prev) => (prev - 1 + selectedItem.images.length) % selectedItem.images.length);
+  };
+
+  const handleTouchStart = (e: React.TouchEvent) => {
+    touchStartX.current = e.touches[0].clientX;
+  };
+
+  const handleTouchMove = (e: React.TouchEvent) => {
+    touchEndX.current = e.touches[0].clientX;
+  };
+
+  const handleTouchEnd = () => {
+    const diff = touchStartX.current - touchEndX.current;
+    const threshold = 50;
+    if (Math.abs(diff) > threshold) {
+      if (diff > 0) {
+        nextImage();
+      } else {
+        prevImage();
+      }
+    }
   };
 
   return (
@@ -95,7 +117,13 @@ export default function Timeline() {
               </button>
 
               {/* Image Container */}
-              <div className="relative rounded-xl overflow-hidden shadow-inner mb-4 flex-shrink-0 group" style={{ maxHeight: '60vh' }}>
+              <div 
+                className="relative rounded-xl overflow-hidden shadow-inner mb-4 flex-shrink-0 group" 
+                style={{ maxHeight: '60vh' }}
+                onTouchStart={handleTouchStart}
+                onTouchMove={handleTouchMove}
+                onTouchEnd={handleTouchEnd}
+              >
                 <img 
                   src={selectedItem.images ? selectedItem.images[currentImageIndex] : selectedItem.image} 
                   alt={selectedItem.title}
@@ -106,14 +134,14 @@ export default function Timeline() {
                 {selectedItem.images && selectedItem.images.length > 1 && (
                   <>
                     <button 
-                      onClick={prevImage}
-                      className="absolute left-2 top-1/2 -translate-y-1/2 bg-white/50 hover:bg-white/80 p-2 rounded-full backdrop-blur-sm transition-all opacity-0 group-hover:opacity-100"
+                      onClick={(e) => prevImage(e)}
+                      className="absolute left-2 top-1/2 -translate-y-1/2 bg-white/50 hover:bg-white/80 p-2 rounded-full backdrop-blur-sm transition-all md:opacity-0 md:group-hover:opacity-100"
                     >
                       <ChevronLeft size={20} />
                     </button>
                     <button 
-                      onClick={nextImage}
-                      className="absolute right-2 top-1/2 -translate-y-1/2 bg-white/50 hover:bg-white/80 p-2 rounded-full backdrop-blur-sm transition-all opacity-0 group-hover:opacity-100"
+                      onClick={(e) => nextImage(e)}
+                      className="absolute right-2 top-1/2 -translate-y-1/2 bg-white/50 hover:bg-white/80 p-2 rounded-full backdrop-blur-sm transition-all md:opacity-0 md:group-hover:opacity-100"
                     >
                       <ChevronRight size={20} />
                     </button>

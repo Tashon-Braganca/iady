@@ -9,6 +9,7 @@ interface LevelBottomSheetProps {
   onClose: () => void;
   level: any;
   onOpenLevel: () => void;
+  onOpenMemories?: () => void;
   isLocked?: boolean;
 }
 
@@ -17,6 +18,7 @@ export default function LevelBottomSheet({
     onClose, 
     level, 
     onOpenLevel,
+    onOpenMemories,
     isLocked = false 
 }: LevelBottomSheetProps) {
     const sheetRef = useRef<HTMLDivElement>(null);
@@ -147,23 +149,47 @@ export default function LevelBottomSheet({
 
                             {/* Actions */}
                             <div className="flex gap-3 mt-4">
-                                <button
-                                    onClick={onClose}
-                                    className="flex-1 py-4 rounded-xl border border-gray-200 font-bold text-gray-500 hover:bg-gray-50 transition-colors"
-                                >
-                                    Later
-                                </button>
-                                <button
-                                    onClick={handleAction}
-                                    disabled={isLocked}
-                                    className={`
-                                        flex-1 py-4 rounded-xl font-bold text-white shadow-lg hover:shadow-xl transition-all flex items-center justify-center gap-2
-                                        ${isLocked ? "bg-gray-300 cursor-not-allowed" : level.meetLink ? "bg-green-600 hover:bg-green-700 hover:scale-[1.02]" : "bg-gray-900 hover:scale-[1.02]"}
-                                    `}
-                                >
-                                    {isLocked ? <Lock size={18} /> : level.meetLink ? <Phone size={18} /> : <PlayCircle size={18} />}
-                                    {isLocked ? "Locked" : level.meetLink ? "Call Now 📞" : "Open Memory"}
-                                </button>
+                                {level.meetLink ? (
+                                    <>
+                                        <button
+                                            onClick={() => onOpenMemories?.()}
+                                            className="flex-1 py-4 rounded-xl border border-gray-200 font-bold text-gray-500 hover:bg-gray-50 transition-colors"
+                                        >
+                                            Open Memories
+                                        </button>
+                                        <button
+                                            onClick={handleAction}
+                                            disabled={isLocked}
+                                            className={`
+                                                flex-1 py-4 rounded-xl font-bold text-white shadow-lg hover:shadow-xl transition-all flex items-center justify-center gap-2
+                                                ${isLocked ? "bg-gray-300 cursor-not-allowed" : "bg-green-600 hover:bg-green-700 hover:scale-[1.02]"}
+                                            `}
+                                        >
+                                            {isLocked ? <Lock size={18} /> : <Phone size={18} />}
+                                            {isLocked ? "Locked" : "Call Now 📞"}
+                                        </button>
+                                    </>
+                                ) : (
+                                    <>
+                                        <button
+                                            onClick={onClose}
+                                            className="flex-1 py-4 rounded-xl border border-gray-200 font-bold text-gray-500 hover:bg-gray-50 transition-colors"
+                                        >
+                                            Later
+                                        </button>
+                                        <button
+                                            onClick={handleAction}
+                                            disabled={isLocked}
+                                            className={`
+                                                flex-1 py-4 rounded-xl font-bold text-white shadow-lg hover:shadow-xl transition-all flex items-center justify-center gap-2
+                                                ${isLocked ? "bg-gray-300 cursor-not-allowed" : level.meetLink ? "bg-green-600 hover:bg-green-700 hover:scale-[1.02]" : "bg-gray-900 hover:scale-[1.02]"}
+                                            `}
+                                        >
+                                            {isLocked ? <Lock size={18} /> : level.meetLink ? <Phone size={18} /> : <PlayCircle size={18} />}
+                                            {isLocked ? "Locked" : level.meetLink ? "Call Now 📞" : "Open Memory"}
+                                        </button>
+                                    </>
+                                )}
                             </div>
                         </div>
                     </motion.div>

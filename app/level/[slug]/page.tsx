@@ -89,7 +89,7 @@ export default function LevelPage({ params }: { params: Promise<{ slug: string }
 
                 {slug === 'aot' && (
                     <div className="bg-gray-900 text-white p-3 rounded-xl w-full mb-2 shadow-lg shadow-gray-200">
-                        <p className="italic font-serif text-xs tracking-wide">"If you don't fight, you can't win."</p>
+                        <p className="italic font-serif text-xs tracking-wide">"I will always wrap that scraf around you"</p>
                     </div>
                 )}
                 
