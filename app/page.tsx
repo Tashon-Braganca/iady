@@ -3,7 +3,7 @@
 import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
-import { Lock, Heart, Key, X } from "lucide-react";
+import { Lock, Heart, Key } from "lucide-react";
 import { siteData } from "@/content/siteData";
 import { useMusic } from "@/lib/MusicContext";
 
@@ -69,10 +69,15 @@ export default function LoginPage() {
     <div className="min-h-screen flex flex-col items-center justify-center bg-pink-50 relative overflow-hidden">
         {/* Bouquet Button - Outside pointer-events-none */}
         <motion.button 
-            onClick={() => setShowBouquet(true)}
+            onClick={() => {
+              console.log('Bouquet button clicked');
+              setShowBouquet(true);
+            }}
+            whileHover={{ scale: 1.1 }}
+            whileTap={{ scale: 0.9 }}
             animate={{ y: [0, -20, 0], rotate: [0, 10, 0] }}
             transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
-            className="absolute top-20 left-10 md:left-20 text-4xl cursor-pointer hover:scale-110 transition-transform z-20"
+            className="absolute top-16 left-6 md:top-20 md:left-20 text-5xl md:text-4xl cursor-pointer z-20 touch-manipulation"
         >
             💌
         </motion.button>
@@ -161,33 +166,27 @@ export default function LoginPage() {
         </form>
       </motion.div>
 
-      {/* Bouquet Modal */}
+      {/* Bouquet Modal - Iframe */}
       <AnimatePresence>
         {showBouquet && (
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className="fixed inset-0 z-[100] bg-black/90 backdrop-blur-sm flex items-center justify-center p-2"
+            className="fixed inset-0 z-[100] bg-black/90 backdrop-blur-sm flex items-center justify-center p-0"
             onClick={() => setShowBouquet(false)}
           >
             <motion.div
-              initial={{ scale: 0.8, y: 20 }}
-              animate={{ scale: 1, y: 0 }}
-              exit={{ scale: 0.8, y: 20 }}
-              className="bg-white rounded-xl md:rounded-2xl w-full h-[85vh] md:h-[80vh] overflow-hidden relative shadow-2xl"
+              initial={{ scale: 0.9 }}
+              animate={{ scale: 1 }}
+              exit={{ scale: 0.9 }}
+              className="bg-white w-full h-full md:rounded-none rounded-t-2xl overflow-hidden relative"
               onClick={(e) => e.stopPropagation()}
             >
-              <button
-                onClick={() => setShowBouquet(false)}
-                className="absolute top-3 right-3 z-10 bg-white/90 hover:bg-white rounded-full p-2 shadow-lg transition-colors"
-              >
-                <X size={20} className="text-gray-700" />
-              </button>
               <iframe
                 src="https://digibouquet.vercel.app/bouquet/12a9941a-601f-4f40-aab7-5e8a9781bc0c"
                 className="w-full h-full border-0"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; fullscreen"
                 allowFullScreen
               />
             </motion.div>
