@@ -73,7 +73,7 @@ export default function LoginPage() {
                 onClick={() => setShowBouquet(true)}
                 animate={{ y: [0, -20, 0], rotate: [0, 10, 0] }}
                 transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
-                className="absolute top-20 left-10 md:left-20 text-4xl cursor-pointer hover:scale-110 transition-transform"
+                className="absolute top-20 left-10 md:left-20 text-4xl cursor-pointer hover:scale-110 transition-transform pointer-events-auto"
             >
                 💌
             </motion.button>
