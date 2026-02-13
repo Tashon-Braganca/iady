@@ -67,21 +67,23 @@ export default function LoginPage() {
 
   return (
     <div className="min-h-screen flex flex-col items-center justify-center bg-pink-50 relative overflow-hidden">
-        {/* Bouquet Button - Outside pointer-events-none */}
-        <motion.button 
-            onClick={(e) => {
-              e.preventDefault();
-              e.stopPropagation();
-              setShowBouquet(true);
-            }}
-            whileHover={{ scale: 1.1 }}
-            whileTap={{ scale: 0.9 }}
-            animate={{ y: [0, -10, 0], rotate: [0, 5, 0] }}
-            transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
-            className="absolute top-10 left-6 md:top-20 md:left-20 z-50 p-4 bg-white/30 backdrop-blur-md rounded-full shadow-lg border border-white/50 cursor-pointer touch-manipulation hover:bg-white/50 transition-colors"
-        >
-            <span className="text-4xl md:text-5xl filter drop-shadow-md">💌</span>
-        </motion.button>
+        {/* Bouquet Button - FIXED position so it's always clickable */}
+        <div className="fixed top-8 left-6 md:top-20 md:left-20 z-[9999]">
+          <motion.button 
+              onClick={(e) => {
+                e.preventDefault();
+                e.stopPropagation();
+                setShowBouquet(true);
+              }}
+              whileHover={{ scale: 1.1 }}
+              whileTap={{ scale: 0.9 }}
+              animate={{ y: [0, -10, 0], rotate: [0, 5, 0] }}
+              transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+              className="block p-3 bg-white/80 backdrop-blur-md rounded-2xl shadow-[0_8px_30px_rgb(0,0,0,0.12)] border border-white cursor-pointer touch-manipulation hover:bg-white transition-colors"
+          >
+              <div className="text-5xl md:text-5xl filter drop-shadow-sm leading-none">💌</div>
+          </motion.button>
+        </div>
 
         {/* Background Decorative Elements */}
         <div className="absolute top-0 left-0 w-full h-full pointer-events-none overflow-hidden">
