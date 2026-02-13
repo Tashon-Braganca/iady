@@ -4,7 +4,7 @@ import { useState, useEffect, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { siteData } from "@/content/siteData";
 import { useRouter } from "next/navigation";
-import { CheckCircle2, Lock, ChevronDown, Coffee, Plane, Sword, Flower2, Candy, Utensils, Film, Palette, Moon, Video, Smile, Heart, PlayCircle, Star, ArrowDown } from "lucide-react";
+import { CheckCircle2, Lock, ChevronDown, Coffee, Plane, Sword, Flower2, Candy, Utensils, Film, Palette, Moon, Video, Smile, Heart, PlayCircle, Star, ArrowDown, X } from "lucide-react";
 import MusicPlayer from "@/components/MusicPlayer";
 import Timeline from "@/components/Timeline";
 import BucketList from "@/components/BucketList";
@@ -25,6 +25,7 @@ export default function PathPage() {
   const [completedLevels, setCompletedLevels] = useState<string[]>([]);
   const [selectedLevel, setSelectedLevel] = useState<any>(null);
   const [showToast, setShowToast] = useState<{message: string, visible: boolean}>({ message: "", visible: false });
+  const [showBouquet, setShowBouquet] = useState(false);
   
   // Load progress
   useEffect(() => {
@@ -164,22 +165,27 @@ export default function PathPage() {
            </div>
        </div>
 
-       <header className="pt-24 pb-12 px-6 text-center relative z-10">
-        <motion.div
-            initial={{ scale: 0.8, opacity: 0 }}
-            animate={{ scale: 1, opacity: 1 }}
-            transition={{ type: "spring" }}
-            className="inline-block mb-4 relative"
-        >
-             <div className="text-6xl filter drop-shadow-md">💌</div>
-             <motion.div 
-                animate={{ rotate: [0, 10, -10, 0] }}
-                transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
-                className="absolute -top-2 -right-2 text-2xl"
-            >
-                ✨
-            </motion.div>
-        </motion.div>
+        <header className="pt-24 pb-12 px-6 text-center relative z-10">
+         <motion.div
+             initial={{ scale: 0.8, opacity: 0 }}
+             animate={{ scale: 1, opacity: 1 }}
+             transition={{ type: "spring" }}
+             className="inline-block mb-4 relative"
+         >
+              <button 
+                  onClick={() => setShowBouquet(true)}
+                  className="text-6xl filter drop-shadow-md cursor-pointer hover:scale-110 transition-transform active:scale-90"
+              >
+                  💌
+              </button>
+              <motion.div 
+                 animate={{ rotate: [0, 10, -10, 0] }}
+                 transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+                 className="absolute -top-2 -right-2 text-2xl pointer-events-none"
+             >
+                 ✨
+             </motion.div>
+         </motion.div>
         <motion.h1 
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -290,6 +296,41 @@ export default function PathPage() {
         )}
       </AnimatePresence>
 
+      {/* Bouquet Modal - Iframe */}
+      <AnimatePresence>
+        {showBouquet && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            className="fixed inset-0 z-[100] bg-black/90 backdrop-blur-sm flex items-center justify-center p-0"
+            onClick={() => setShowBouquet(false)}
+          >
+            <motion.div
+              initial={{ scale: 0.9 }}
+              animate={{ scale: 1 }}
+              exit={{ scale: 0.9 }}
+              className="bg-white w-full h-full md:rounded-none rounded-t-2xl overflow-hidden relative"
+              onClick={(e) => e.stopPropagation()}
+            >
+              <iframe
+                src="https://digibouquet.vercel.app/bouquet/12a9941a-601f-4f40-aab7-5e8a9781bc0c"
+                className="w-full h-full border-0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; fullscreen"
+                allowFullScreen
+              />
+              {/* Close Button */}
+              <button
+                onClick={() => setShowBouquet(false)}
+                className="absolute top-4 right-4 z-50 bg-black/50 text-white rounded-full p-2 backdrop-blur-md hover:bg-black/70 transition-colors"
+              >
+                <X size={24} />
+              </button>
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+      
       {/* Level Bottom Sheet */}
       <LevelBottomSheet 
         isOpen={!!selectedLevel}
