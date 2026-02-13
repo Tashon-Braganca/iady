@@ -9,7 +9,6 @@ interface LevelBottomSheetProps {
   onClose: () => void;
   level: any;
   onOpenLevel: () => void;
-  onOpenMemories?: () => void;
   isLocked?: boolean;
 }
 
@@ -18,7 +17,6 @@ export default function LevelBottomSheet({
     onClose, 
     level, 
     onOpenLevel,
-    onOpenMemories,
     isLocked = false 
 }: LevelBottomSheetProps) {
     const sheetRef = useRef<HTMLDivElement>(null);
@@ -152,7 +150,7 @@ export default function LevelBottomSheet({
                                 {level.meetLink ? (
                                     <>
                                         <button
-                                            onClick={() => onOpenMemories?.()}
+                                            onClick={onOpenLevel}
                                             className="flex-1 py-4 rounded-xl border border-gray-200 font-bold text-gray-500 hover:bg-gray-50 transition-colors"
                                         >
                                             Open Memories

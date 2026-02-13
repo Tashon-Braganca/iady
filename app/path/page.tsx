@@ -53,7 +53,7 @@ export default function PathPage() {
       setTimeout(() => setShowToast(prev => ({ ...prev, visible: false })), 3000);
   };
 
-  const openLevel = (openMemoriesOnly = false) => {
+  const openLevel = () => {
     if (!selectedLevel) return;
     
     // Mark as complete if not already
@@ -63,13 +63,7 @@ export default function PathPage() {
         localStorage.setItem("completedLevels", JSON.stringify(newCompleted));
     }
 
-    // If just opening memories (for date-night), don't navigate, just close the sheet
-    if (openMemoriesOnly) {
-        setSelectedLevel(null);
-        return;
-    }
-    
-    // Navigation Logic
+    // Navigation Logic - for date-night, go to level page like others
     if (selectedLevel.id === 'vc') router.push('/gallery'); 
     else if (selectedLevel.id === 'hug') router.push('/level/hug'); 
     else router.push(`/level/${selectedLevel.id}`);
@@ -301,8 +295,7 @@ export default function PathPage() {
         isOpen={!!selectedLevel}
         onClose={() => setSelectedLevel(null)}
         level={selectedLevel}
-        onOpenLevel={() => openLevel(false)}
-        onOpenMemories={() => openLevel(true)}
+        onOpenLevel={openLevel}
         isLocked={selectedLevel && isLevelLocked(siteData.levels.findIndex(l => l.id === selectedLevel.id))}
        />
      </div>
