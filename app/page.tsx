@@ -3,7 +3,7 @@
 import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
-import { Lock, Heart, Key } from "lucide-react";
+import { Lock, Heart, Key, X } from "lucide-react";
 import { siteData } from "@/content/siteData";
 import { useMusic } from "@/lib/MusicContext";
 
@@ -69,17 +69,18 @@ export default function LoginPage() {
     <div className="min-h-screen flex flex-col items-center justify-center bg-pink-50 relative overflow-hidden">
         {/* Bouquet Button - Outside pointer-events-none */}
         <motion.button 
-            onClick={() => {
-              console.log('Bouquet button clicked');
+            onClick={(e) => {
+              e.preventDefault();
+              e.stopPropagation();
               setShowBouquet(true);
             }}
             whileHover={{ scale: 1.1 }}
             whileTap={{ scale: 0.9 }}
-            animate={{ y: [0, -20, 0], rotate: [0, 10, 0] }}
-            transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
-            className="absolute top-16 left-6 md:top-20 md:left-20 text-5xl md:text-4xl cursor-pointer z-20 touch-manipulation"
+            animate={{ y: [0, -10, 0], rotate: [0, 5, 0] }}
+            transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+            className="absolute top-10 left-6 md:top-20 md:left-20 z-50 p-4 bg-white/30 backdrop-blur-md rounded-full shadow-lg border border-white/50 cursor-pointer touch-manipulation hover:bg-white/50 transition-colors"
         >
-            💌
+            <span className="text-4xl md:text-5xl filter drop-shadow-md">💌</span>
         </motion.button>
 
         {/* Background Decorative Elements */}
@@ -189,6 +190,13 @@ export default function LoginPage() {
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; fullscreen"
                 allowFullScreen
               />
+              {/* Close Button */}
+              <button
+                onClick={() => setShowBouquet(false)}
+                className="absolute top-4 right-4 z-50 bg-black/50 text-white rounded-full p-2 backdrop-blur-md hover:bg-black/70 transition-colors"
+              >
+                <X size={24} />
+              </button>
             </motion.div>
           </motion.div>
         )}
