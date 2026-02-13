@@ -3,17 +3,18 @@
 import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
-import { Lock, Heart, Key } from "lucide-react";
+import { Lock, Heart, Key, X } from "lucide-react";
 import { siteData } from "@/content/siteData";
-import { useMusic } from "@/lib/MusicContext"; // Import music context
+import { useMusic } from "@/lib/MusicContext";
 
 export default function LoginPage() {
   const [password, setPassword] = useState("");
   const [errorCount, setErrorCount] = useState(0);
   const [message, setMessage] = useState("");
   const [loading, setLoading] = useState(false);
+  const [showBouquet, setShowBouquet] = useState(false);
   const router = useRouter();
-  const { togglePlay, isPlaying } = useMusic(); // Get music toggle function and state
+  const { togglePlay, isPlaying } = useMusic();
   
   // Clear session on mount to force re-login
   useEffect(() => {
@@ -68,13 +69,14 @@ export default function LoginPage() {
     <div className="min-h-screen flex flex-col items-center justify-center bg-pink-50 relative overflow-hidden">
         {/* Background Decorative Elements - Minimal Emojis */}
         <div className="absolute top-0 left-0 w-full h-full pointer-events-none overflow-hidden">
-             <motion.div 
+             <motion.button 
+                onClick={() => setShowBouquet(true)}
                 animate={{ y: [0, -20, 0], rotate: [0, 10, 0] }}
                 transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
-                className="absolute top-20 left-10 md:left-20 text-4xl"
+                className="absolute top-20 left-10 md:left-20 text-4xl cursor-pointer hover:scale-110 transition-transform"
             >
                 💌
-            </motion.div>
+            </motion.button>
              <motion.div 
                 animate={{ y: [0, 20, 0], rotate: [0, -10, 0] }}
                 transition={{ duration: 7, repeat: Infinity, ease: "easeInOut" }}
@@ -156,6 +158,40 @@ export default function LoginPage() {
           </motion.button>
         </form>
       </motion.div>
+
+      {/* Bouquet Modal */}
+      <AnimatePresence>
+        {showBouquet && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            className="fixed inset-0 z-[100] bg-black/80 backdrop-blur-sm flex items-center justify-center p-4"
+            onClick={() => setShowBouquet(false)}
+          >
+            <motion.div
+              initial={{ scale: 0.8, y: 20 }}
+              animate={{ scale: 1, y: 0 }}
+              exit={{ scale: 0.8, y: 20 }}
+              className="bg-white rounded-2xl w-full max-w-3xl h-[80vh] overflow-hidden relative shadow-2xl"
+              onClick={(e) => e.stopPropagation()}
+            >
+              <button
+                onClick={() => setShowBouquet(false)}
+                className="absolute top-4 right-4 z-10 bg-white/80 hover:bg-white rounded-full p-2 shadow-lg transition-colors"
+              >
+                <X size={24} className="text-gray-700" />
+              </button>
+              <iframe
+                src="https://digibouquet.vercel.app/bouquet/12a9941a-601f-4f40-aab7-5e8a9781bc0c"
+                className="w-full h-full border-0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowFullScreen
+              />
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </div>
   );
 }
